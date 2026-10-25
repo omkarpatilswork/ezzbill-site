@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>EZZ BILL — the digital layer for bills</title>
 <meta name="description" content="UPI solved payments. EZZ BILL solves what happens after: every bill delivered to your phone, itemised and searchable, with spend insights, warranty alerts and one-tap support.">
 <link rel="canonical" href="https://www.ezzbill.com/">
@@ -12,795 +12,895 @@
 <meta property="og:description" content="Every bill delivered to your phone the moment you pay — itemised, searchable and working for you.">
 <meta property="og:image" content="https://www.ezzbill.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0A110E">
+<meta name="theme-color" content="#0F1713">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-
+<link rel="preload" href="/assets/fonts/martian-mono-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/img/ezz-tap-guest.webp" as="image" type="image/webp">
+<script>document.documentElement.classList.add('js')</script>
 <style>
-  /* ---------- fonts (self-hosted) ---------- */
-  @font-face { font-family: "Gloock"; font-style: normal; font-weight: 400; font-display: swap;
-    src: url(/assets/fonts/gloock-latin-400-normal.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-  @font-face { font-family: "Gloock"; font-style: normal; font-weight: 400; font-display: swap;
-    src: url(/assets/fonts/gloock-latin-ext-400-normal.woff2) format("woff2");
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-  @font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 400 900; font-display: swap;
-    src: url(/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2) format("woff2-variations");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-  @font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 400 900; font-display: swap;
-    src: url(/assets/fonts/schibsted-grotesk-latin-ext-wght-normal.woff2) format("woff2-variations");
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-  @font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap;
-    src: url(/assets/fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-  @font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap;
-    src: url(/assets/fonts/ibm-plex-mono-latin-ext-400-normal.woff2) format("woff2");
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-  @font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap;
-    src: url(/assets/fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-  @font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap;
-    src: url(/assets/fonts/ibm-plex-mono-latin-ext-500-normal.woff2) format("woff2");
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+/* ================= fonts (self-hosted, same families as the portfolio) ================= */
+@font-face{font-family:"Archivo";font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:optional;src:url(/assets/fonts/archivo-latin-standard-normal.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Archivo";font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:optional;src:url(/assets/fonts/archivo-latin-ext-standard-normal.woff2) format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Martian Mono";font-style:normal;font-weight:100 800;font-stretch:75% 112.5%;font-display:optional;src:url(/assets/fonts/martian-mono-latin-standard-normal.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Schibsted Grotesk";font-style:normal;font-weight:400 900;font-display:swap;src:url(/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Schibsted Grotesk";font-style:normal;font-weight:400 900;font-display:swap;src:url(/assets/fonts/schibsted-grotesk-latin-ext-wght-normal.woff2) format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF}
 
-  /* ---------- tokens: one committed "ink & paper" world ----------
-     The site deliberately stays dark in every theme: it frames the real
-     app's own dark screens, and receipt paper is the only light surface. */
-  :root {
-    --ink: #0A110E; --ink-2: #0F1813; --ink-3: #142019; --line: #22312A; --line-soft: #1A2620;
-    --text: #ECEFEA; --dim: #A4AEA8; --faint: #6F7A74;
-    --emerald: #3FAF7D; --emerald-deep: #2C7D59; --emerald-wash: rgba(63,175,125,.10); --emerald-line: rgba(63,175,125,.32);
-    --gold: #E3AE3A; --leak: #E8584F;
-    --paper: #F2EFE6; --paper-2: #E7E3D7; --paper-ink: #24231E; --paper-dim: #6D6A60;
-    --serif: "Gloock", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-    --sans: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
-    --ease: cubic-bezier(.22,.7,.2,1);
-    --max: 1180px;
-    color-scheme: dark;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-  body { margin: 0; background: var(--ink); color: var(--text); font-family: var(--sans); font-size: 17px; line-height: 1.55;
-    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; }
-  h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
-  p { margin: 0; }
-  ::selection { background: var(--emerald-line); }
-  :focus-visible { outline: 2px solid var(--emerald); outline-offset: 3px; border-radius: 6px; }
+/* ================= tokens: the portfolio's dark EZZ BILL band ================= */
+:root{
+  --band:#0F1713; --band-2:#17211C; --band-fg:#E9EFEA; --band-muted:#93A199; --band-line:#26332C;
+  --band-accent:#47C48A; --signal:#C98A10; --on-accent:#06120C;
+  --paper:#FBFAF5; --paper-ink:#1C1B17; --paper-muted:#77736A; --machine:#1A221E;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --mono:"Martian Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,"Schibsted Grotesk",monospace;
+  --step--1:clamp(.78rem,.74rem + .2vw,.86rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.1rem);
+  --step-1:clamp(1.2rem,1.1rem + .5vw,1.45rem);
+  --step-2:clamp(1.6rem,1.3rem + 1.4vw,2.4rem);
+  --step-3:clamp(2.2rem,1.5rem + 3.2vw,4.4rem);
+  --title:clamp(3rem,1.6rem + 7vw,8.8rem);
+  --gutter:max(16px, env(safe-area-inset-left, 0px));
+  --ease:cubic-bezier(.2,.7,.1,1);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: dark){ :root{ --band:#111915; --band-accent:#4FCB91; } }
 
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
-  .section { padding: clamp(80px, 11vw, 148px) 0; border-top: 1px solid var(--line-soft); }
-  .label { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--emerald); }
-  .h2 { font-family: var(--serif); font-size: clamp(36px, 5.2vw, 64px); line-height: 1.02; letter-spacing: -.01em; margin-top: 18px; }
-  .lede { color: var(--dim); font-size: clamp(17px, 1.5vw, 19px); max-width: 58ch; margin-top: 22px; }
-  .mono { font-family: var(--mono); }
-  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--band);color:var(--band-fg);font-family:var(--body);font-size:var(--step-0);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+img,video,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:800;font-stretch:112%;letter-spacing:-.02em;line-height:.95;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--band-accent);outline-offset:3px;border-radius:6px}
+::selection{background:color-mix(in srgb,var(--band-accent) 35%,transparent)}
+.wrap{max-width:1320px;margin:0 auto;padding-left:var(--gutter);padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.grid12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.eyebrow{font-family:var(--mono);font-stretch:88%;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--band-muted);display:flex;gap:.6em;align-items:center;flex-wrap:wrap;margin:0}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--band-accent);flex-shrink:0;animation:pulse 2.4s infinite}
+.dot.gold{background:var(--signal);--pc:var(--signal)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--pc,var(--band-accent)) 60%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.mono{font-family:var(--mono);font-stretch:88%;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em}
+.title{font-size:var(--title);font-stretch:125%;font-weight:900;letter-spacing:-.035em;line-height:.88}
+.title .g,.h2 .g{color:var(--band-accent)}
+.h2{font-size:var(--step-3);font-stretch:112%;font-weight:850;letter-spacing:-.025em;line-height:.92}
+.lede{font-size:var(--step-1);line-height:1.45;max-width:44ch;color:var(--band-fg)}
+.lede.muted,.muted{color:var(--band-muted)}
+.sec{padding-block:clamp(80px,11vw,150px);border-top:1px solid var(--band-line);position:relative}
+.sec-head{margin-bottom:clamp(40px,6vw,80px)}
+.sec-head .eyebrow{grid-column:1 / span 3;align-self:start;padding-top:.7em}
+.sec-head .t{grid-column:4 / -1;display:flex;flex-direction:column;gap:22px;min-width:0}
+@media (max-width:900px){.sec-head .eyebrow,.sec-head .t{grid-column:1 / -1}}
+.ic{width:.9em;height:.9em;flex-shrink:0;transition:transform .35s var(--ease)}
+.src{font-size:.78rem;color:var(--band-muted)}
+.src a{color:var(--band-fg);text-decoration-color:var(--band-line);text-underline-offset:3px}
 
-  /* ---------- buttons ---------- */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 600 15px/1 var(--sans);
-    padding: 15px 22px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; text-decoration: none;
-    transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease); white-space: nowrap; }
-  .btn:active { transform: scale(.97); }
-  .btn--primary { background: var(--emerald); color: #04130B; }
-  .btn--primary:hover { background: #4FC08E; }
-  .btn--ghost { border-color: var(--line); color: var(--text); background: transparent; }
-  .btn--ghost:hover { border-color: var(--emerald-line); color: #fff; }
-  .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+/* ================= buttons & links ================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-family:var(--body);font-weight:600;font-size:.98rem;line-height:1;padding:.95rem 1.35rem;border-radius:999px;text-decoration:none;border:1px solid var(--band-line);color:var(--band-fg);background:transparent;cursor:pointer;white-space:nowrap;transition:transform .35s var(--ease),background .25s,color .25s,border-color .25s;will-change:transform}
+.btn:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--band-fg) 45%,transparent)}
+.btn.primary{background:var(--band-fg);color:var(--band);border-color:var(--band-fg)}
+.btn.primary:hover{background:var(--band-accent);border-color:var(--band-accent);color:var(--on-accent)}
+.btn:hover .ic.ext{transform:translate(3px,-3px)} .btn:hover .ic.rt{transform:translateX(3px)} .btn:hover .ic.dn{transform:translateY(3px)}
+.btn:disabled{opacity:.6;cursor:progress}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tlink{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:600;color:var(--band-fg);background:linear-gradient(var(--signal),var(--signal)) 0 100%/100% 1.5px no-repeat;padding-bottom:2px}
+.tlink:hover .ic.ext{transform:translate(3px,-3px)} .tlink:hover .ic.rt{transform:translateX(3px)} .tlink:hover .ic.dn{transform:translateY(3px)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-stretch:88%;font-size:.68rem;letter-spacing:.04em;padding:.4rem .65rem;border:1px solid var(--band-line);border-radius:999px;color:var(--band-muted);white-space:nowrap}
+.live{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-stretch:88%;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;padding:.55rem .85rem;border:1px solid var(--band-line);border-radius:999px;text-decoration:none;background:var(--band-2);color:var(--band-fg);transition:border-color .25s,transform .35s var(--ease)}
+.live:hover{border-color:color-mix(in srgb,var(--band-accent) 55%,transparent);transform:translateY(-2px)}
+.live:hover .ic.ext{transform:translate(3px,-3px)}
 
-  /* ---------- nav ---------- */
-  .nav { position: sticky; top: 0; z-index: 50; background: rgba(10,17,14,.72); backdrop-filter: blur(16px) saturate(1.3); -webkit-backdrop-filter: blur(16px) saturate(1.3);
-    border-bottom: 1px solid transparent; transition: border-color .3s var(--ease); }
-  .nav.scrolled { border-bottom-color: var(--line-soft); }
-  .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
-  .wordmark { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--mono); font-weight: 500; font-size: 15px; letter-spacing: .18em; }
-  .wordmark svg { width: 22px; height: 26px; }
-  .nav__links { display: flex; align-items: center; gap: 30px; }
-  .nav__links a:not(.btn) { color: var(--dim); text-decoration: none; font-size: 14.5px; transition: color .2s; }
-  .nav__links a:not(.btn):hover { color: var(--text); }
-  .nav__links .btn { padding: 11px 18px; font-size: 14px; }
-  .nav__toggle { display: none; width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line); background: var(--ink-2); cursor: pointer;
-    flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; }
-  .nav__toggle span { width: 18px; height: 1.5px; background: var(--text); border-radius: 2px; transition: transform .25s var(--ease), opacity .2s; }
-  .nav__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-  .nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-  @media (max-width: 880px) {
-    .nav__toggle { display: flex; }
-    .nav__links { position: fixed; top: 76px; left: 12px; right: 12px; flex-direction: column; align-items: stretch; gap: 2px; padding: 10px;
-      background: var(--ink-2); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 24px 60px -20px rgba(0,0,0,.7);
-      opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s var(--ease), transform .2s var(--ease), visibility .2s; }
-    .nav__links.open { opacity: 1; visibility: visible; transform: none; }
-    .nav__links a:not(.btn) { padding: 14px 14px; border-radius: 12px; font-size: 16px; color: var(--text); }
-    .nav__links a:not(.btn):hover { background: var(--ink-3); }
-    .nav__links .btn { margin-top: 6px; padding: 15px; }
-  }
+/* ================= nav ================= */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--band) 80%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid color-mix(in srgb,var(--band-line) 70%,transparent)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-family:var(--display);font-weight:850;font-stretch:100%;font-size:1.15rem;letter-spacing:.02em;white-space:nowrap}
+.brand svg{width:20px;height:24px}
+.nav ul{list-style:none;margin:0 0 0 auto;padding:0;display:flex;gap:2px}
+.nav ul a{text-decoration:none;font-size:.92rem;padding:.45rem .75rem;border-radius:999px;color:var(--band-muted);transition:color .2s,background .2s}
+.nav ul a:hover{color:var(--band-fg);background:color-mix(in srgb,var(--band-fg) 7%,transparent)}
+.nav .status{margin-left:8px}
+.nav .btn{padding:.7rem 1.05rem;font-size:.9rem}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--band-accent);transform-origin:0 50%;transform:scaleX(0)}
+.burger{display:none;width:42px;height:42px;border-radius:999px;border:1px solid var(--band-line);background:var(--band-2);cursor:pointer;padding:0;flex-direction:column;align-items:center;justify-content:center;gap:5px;margin-left:auto}
+.burger span{width:16px;height:1.5px;background:var(--band-fg);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media (max-width:1080px){.nav .status{display:none}}
+@media (max-width:900px){
+  .burger{display:flex}
+  .nav .cta{display:none}
+  .nav ul{position:fixed;top:72px;left:12px;right:12px;margin:0;flex-direction:column;gap:2px;padding:10px;background:var(--band-2);border:1px solid var(--band-line);border-radius:20px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s}
+  .nav ul.open{opacity:1;visibility:visible;transform:none}
+  .nav ul a{display:block;padding:14px;border-radius:12px;font-size:1rem;color:var(--band-fg)}
+  .nav ul li.m-only{display:block}
+}
+.nav ul li.m-only{display:none}
+.nav ul li.m-only .btn{width:100%;margin-top:6px;padding:15px}
 
-  /* ---------- hero ---------- */
-  .hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(72px, 9vw, 120px); overflow: hidden; }
-  .hero::before { content: ""; position: absolute; inset: -20% -10% auto auto; width: min(780px, 90vw); height: 780px; pointer-events: none;
-    background: radial-gradient(closest-side, rgba(63,175,125,.16), transparent 70%); }
-  .hero__grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
-  .hero h1 { font-family: var(--serif); font-size: clamp(44px, 6.6vw, 86px); line-height: .98; letter-spacing: -.015em; margin-top: 22px; }
-  .hero h1 em { font-style: normal; color: var(--emerald); }
-  .hero__sub { color: var(--dim); font-size: clamp(17px, 1.6vw, 20px); max-width: 46ch; margin-top: 26px; }
-  .waitlist { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 34px; max-width: 520px; }
-  .waitlist input[type=email], .field input { flex: 1 1 220px; min-width: 0; font: 400 16px/1 var(--sans); color: var(--text); background: var(--ink-2);
-    border: 1px solid var(--line); border-radius: 999px; padding: 15px 20px; transition: border-color .2s; }
-  .waitlist input::placeholder, .field input::placeholder { color: var(--faint); }
-  .waitlist input:focus-visible, .field input:focus-visible { outline: none; border-color: var(--emerald); box-shadow: 0 0 0 4px var(--emerald-wash); }
-  .hero__meta { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 26px; font-size: 14px; color: var(--faint); }
-  .hero__meta a { color: var(--dim); text-decoration-color: var(--line); text-underline-offset: 4px; }
-  .hero__meta a:hover { color: var(--text); }
-  .live-dot { display: inline-flex; align-items: center; gap: 8px; }
-  .live-dot::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 4px var(--emerald-wash); }
-  .form-note { width: 100%; font-size: 14px; margin-top: 4px; }
-  .form-note.ok { color: var(--emerald); } .form-note.err { color: var(--leak); }
-  @media (max-width: 920px) { .hero__grid { grid-template-columns: minmax(0, 1fr); } .hero__stage { justify-content: center; padding-right: 0; } .stage-caption { right: auto; left: 50%; transform: translateX(-50%); } }
+/* ================= phone frame (portfolio component) ================= */
+.phone{position:relative;width:min(330px,100%);aspect-ratio:390/844;border-radius:46px;padding:11px;background:linear-gradient(145deg,#2b3330,#0b0f0d 40%,#1d2421);box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 40px 80px -20px rgba(0,0,0,.55),0 10px 30px -10px rgba(0,0,0,.4);display:block;text-decoration:none}
+.phone::before{content:"";position:absolute;top:20px;left:50%;transform:translateX(-50%);width:92px;height:26px;border-radius:20px;background:#050706;z-index:3}
+.phone .screen{display:block;position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:#0d1210}
+.phone .screen > img,.phone .screen > video{position:absolute;inset:4.6% 0 0 0;width:100%;height:95.4%;object-fit:cover;object-position:top}
+.phone.sm{padding:7px;border-radius:28px}
+.phone.sm::before{width:40px;height:12px;top:12px}
+.phone.sm .screen{border-radius:22px}
+.layer{position:absolute;inset:4.6% 0 0 0;overflow:hidden;opacity:0;transform:scale(1.02);transition:opacity .6s var(--ease),transform .8s var(--ease)}
+.layer.on{opacity:1;transform:none}
+.layer img{width:100%;height:auto;display:block}
+.layer img.fit{height:100%;object-fit:cover;object-position:top}
+.layer img.tall{will-change:transform}
+.layer.on.autoscroll img.tall{animation:autoscroll var(--dur,14s) var(--ease) infinite alternate}
+@keyframes autoscroll{0%,12%{transform:translateY(0)}88%,100%{transform:translateY(var(--dist,0px))}}
+.rings{position:absolute;left:50%;bottom:-38px;transform:translateX(-50%);width:120px;height:120px;pointer-events:none;z-index:4}
+.rings i{position:absolute;inset:0;border-radius:50%;border:2px solid var(--band-accent);opacity:0;animation:ring 2.4s infinite var(--ease)}
+.rings i:nth-child(2){animation-delay:.8s}.rings i:nth-child(3){animation-delay:1.6s}
+@keyframes ring{0%{transform:scale(.2);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.cap{font-family:var(--mono);font-stretch:88%;font-size:.66rem;color:var(--band-muted);letter-spacing:.04em}
 
-  /* phone frame (generic device, real app screens) */
-  .phone { position: relative; width: 100%; max-width: 300px; aspect-ratio: 300 / 632; border-radius: 46px; padding: 9px; background: #050806;
-    border: 1px solid #26332D; box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 50px 90px -30px rgba(0,0,0,.85), 0 0 0 6px rgba(255,255,255,.015); }
-  .phone__screen { position: relative; width: 100%; height: 100%; border-radius: 38px; overflow: hidden; background: #0d1210; }
-  .phone__screen img { position: absolute; top: 34px; left: 0; width: 100%; height: calc(100% - 34px); object-fit: cover; object-position: top; }
-  .phone__status { position: absolute; top: 0; left: 0; right: 0; height: 34px; display: flex; justify-content: space-between; align-items: center;
-    padding: 0 26px 0 30px; font: 600 12px/1 var(--sans); color: #E9EDEA; z-index: 2; background: #0d1210; }
-  .phone__status i { display: inline-flex; gap: 4px; align-items: center; font-style: normal; }
-  .phone__status i b { display: inline-block; width: 15px; height: 8px; border: 1px solid #cfd6d2; border-radius: 2px; position: relative; }
-  .phone__status i b::after { content: ""; position: absolute; inset: 1px 3px 1px 1px; background: #cfd6d2; border-radius: 1px; }
-  .phone__island { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 86px; height: 24px; border-radius: 999px; background: #000; z-index: 3; }
+/* ================= A. hero ================= */
+.hero{padding-block:clamp(28px,4vw,64px) clamp(64px,8vw,112px);position:relative;overflow:hidden}
+.hero-grid{align-items:center}
+.hero-copy{grid-column:1 / span 7;display:flex;flex-direction:column;gap:22px;min-width:0}
+.hero h1{font-size:clamp(2.7rem,.9rem + 4.6vw,5.4rem);font-weight:900;font-stretch:118%;letter-spacing:-.035em;line-height:.9;isolation:isolate}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.07em;margin-bottom:-.07em}
+.hero h1 .line > span{display:inline-block;animation:rise 1.1s var(--ease) both}
+.hero h1 .line:nth-child(2) > span{animation-delay:.09s}
+.hero h1 .line:nth-child(3) > span{animation-delay:.18s}
+.hero h1 .line:nth-child(4) > span{animation-delay:.27s}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.hero h1 em{font-style:normal;color:var(--band-accent);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:.12em;bottom:.02em;height:.1em;background:var(--signal);transform-origin:0 50%;animation:draw 1s .9s var(--ease) both;z-index:-1}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero .lede{color:var(--band-muted);font-size:clamp(1.05rem,.95rem + .45vw,1.3rem)}
+.fade-in{animation:fadeUp .9s .45s var(--ease) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.waitlist{display:flex;flex-wrap:wrap;gap:8px;max-width:540px}
+.field{flex:1 1 230px;min-width:0;font:400 1rem/1 var(--body);color:var(--band-fg);background:var(--band-2);border:1px solid var(--band-line);border-radius:999px;padding:.95rem 1.2rem;transition:border-color .2s,box-shadow .2s}
+.field::placeholder{color:var(--band-muted)}
+.field:focus-visible{outline:none;border-color:var(--band-accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--band-accent) 18%,transparent)}
+.note{width:100%;font-size:.92rem}
+.note.ok{color:var(--band-accent)} .note.err{color:#F08A7E}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
+.hero-stage{grid-column:8 / -1;position:relative;display:flex;flex-direction:column;align-items:center;gap:92px;padding-top:8px}
+.hero-stage::before{content:"";position:absolute;left:50%;top:46%;width:min(640px,110vw);height:640px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,color-mix(in srgb,var(--band-accent) 20%,transparent),transparent 70%);pointer-events:none}
+.hero-stage .phone{width:min(300px,82vw);animation:fadeUp 1.1s .25s var(--ease) both}
+.hero-stage .rings{width:150px;height:150px;bottom:-54px}
+@media (max-width:900px){.hero-copy,.hero-stage{grid-column:1 / -1}.hero-stage{margin-top:28px}}
 
-  .hero__stage { position: relative; display: flex; justify-content: flex-end; padding: 0 2% 40px 0; }
-  .hero__stage .phone { max-width: 296px; z-index: 2; }
-  .toast { position: absolute; z-index: 4; top: 46px; left: 14px; right: 14px; display: flex; gap: 11px; align-items: center; padding: 11px 13px;
-    background: rgba(28,36,32,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.08); border-radius: 18px;
-    box-shadow: 0 16px 34px -12px rgba(0,0,0,.7); animation: toast 7s var(--ease) infinite; }
-  .toast__icon { width: 34px; height: 34px; border-radius: 9px; background: var(--emerald); display: grid; place-items: center; flex-shrink: 0; }
-  .toast__icon svg { width: 18px; height: 20px; }
-  .toast__body { min-width: 0; font-size: 12px; line-height: 1.3; }
-  .toast__body strong { display: block; font-size: 12.5px; color: #fff; }
-  .toast__body span { color: #B7C1BB; }
-  .toast__amt { margin-left: auto; font: 500 13px var(--mono); color: #fff; }
+/* why-now strip */
+.why{border-top:1px solid var(--band-line);padding-block:clamp(36px,5vw,56px)}
+.why-grid{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:0;align-items:end}
+.why-grid > *{padding:0 24px}
+.why-grid > *:first-child{padding-left:0}
+.why-grid > * + *{border-left:1px solid var(--band-line)}
+.why-lead{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:var(--step-2);line-height:1;letter-spacing:-.02em}
+.why-lead span{color:var(--band-muted)}
+.stat b{display:block;font-family:var(--display);font-stretch:125%;font-weight:900;font-size:clamp(2.2rem,1.4rem + 2.6vw,3.8rem);line-height:.9;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat b em{font-style:normal;color:var(--band-accent)}
+.stat span{display:block;margin-top:10px;color:var(--band-muted);font-size:.92rem;line-height:1.35}
+.why .src{margin-top:26px}
+@media (max-width:900px){.why-grid{grid-template-columns:1fr 1fr;row-gap:28px}.why-lead{grid-column:1 / -1}.why-grid > *:nth-child(2){padding-left:0;border-left:0}.why-grid > *:nth-child(4){padding-left:0;border-left:0}}
+@media (max-width:480px){.why-grid{grid-template-columns:1fr}.why-grid > *{padding-left:0!important;border-left:0!important}}
 
-  .slip { position: absolute; z-index: 1; left: 0; top: 130px; width: 196px; padding: 18px 16px 22px; background: var(--paper); color: var(--paper-ink);
-    font: 400 10.5px/1.55 var(--mono); box-shadow: 0 30px 50px -20px rgba(0,0,0,.6); transform-origin: top center;
-    -webkit-mask: linear-gradient(#000 0 0) top/100% calc(100% - 7px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom/12px 7px repeat-x;
-            mask: linear-gradient(#000 0 0) top/100% calc(100% - 7px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom/12px 7px repeat-x;
-    animation: slip 7s var(--ease) infinite; }
-  .slip h4 { margin: 0 0 2px; font: 500 11.5px var(--mono); text-align: center; letter-spacing: .06em; }
-  .slip .c { text-align: center; color: var(--paper-dim); }
-  .slip hr { border: 0; border-top: 1px dashed #9a968a; margin: 9px 0; }
-  .slip .r { display: flex; justify-content: space-between; gap: 8px; }
-  .slip .t { font-weight: 500; font-size: 12px; }
-  @keyframes slip {
-    0% { opacity: 0; transform: translate(0, -24px) rotate(-6deg) scaleY(.4); }
-    12% { opacity: 1; transform: translate(0, 0) rotate(-6deg) scaleY(1); }
-    42% { opacity: 1; transform: translate(0, 0) rotate(-6deg); filter: none; }
-    58% { opacity: 0; transform: translate(170px, -20px) rotate(0deg) scale(.55); filter: blur(2px); }
-    100% { opacity: 0; transform: translate(170px, -20px) scale(.55); }
-  }
-  @keyframes toast {
-    0%, 50% { opacity: 0; transform: translateY(-18px) scale(.96); }
-    58%, 92% { opacity: 1; transform: none; }
-    100% { opacity: 0; transform: translateY(-10px); }
-  }
-  .stage-caption { position: absolute; z-index: 3; bottom: 0; right: 2%; width: 296px; text-align: center; white-space: nowrap; font: 400 12px var(--mono); color: var(--faint); letter-spacing: .04em; }
-  @media (max-width: 920px) { .slip { left: 4px; top: 96px; width: 160px; font-size: 9.5px; } }
-  @media (max-width: 420px) { .slip { display: none; } }
+/* ================= problem: receipt (portfolio receipt component) ================= */
+.receipt-grid{align-items:start}
+.receipt-copy{grid-column:1 / span 5;position:sticky;top:120px;display:flex;flex-direction:column;gap:22px}
+.receipt-wrap{grid-column:7 / span 6;position:relative;padding-top:18px;max-width:560px;width:100%}
+.printer{position:relative;height:26px;border-radius:10px 10px 4px 4px;background:var(--machine);margin:0 -14px;z-index:2;box-shadow:0 12px 24px -12px rgba(0,0,0,.4)}
+.printer::after{content:"";position:absolute;left:18px;right:18px;bottom:6px;height:4px;border-radius:2px;background:#050806}
+.printer span{position:absolute;right:14px;top:7px;width:6px;height:6px;border-radius:50%;background:var(--band-accent);animation:pulse 1.8s infinite}
+.receipt{position:relative;margin-top:-8px;background:var(--paper);color:var(--paper-ink);font-family:var(--mono);font-stretch:82%;font-size:.78rem;line-height:1.7;padding:34px clamp(20px,3vw,30px) 46px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
+  --mask:radial-gradient(circle at 8px 100%, transparent 7px, #000 7.5px);
+  -webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 9px) no-repeat, var(--mask) bottom/16px 10px repeat-x;
+          mask:linear-gradient(#000,#000) top/100% calc(100% - 9px) no-repeat, var(--mask) bottom/16px 10px repeat-x}
+.js .receipt[data-print]{clip-path:inset(0 0 100% 0);transition:clip-path 1.6s var(--ease)}
+.js [data-print-wrap].in .receipt[data-print]{clip-path:inset(0 0 -20px 0)}
+.receipt .c{text-align:center}
+.receipt .c small{display:block;color:var(--paper-muted);letter-spacing:.04em;text-transform:none}
+.receipt hr{border:0;border-top:1.5px dashed var(--paper-muted);margin:16px 0;opacity:.6}
+.receipt .grp{color:var(--paper-muted);text-transform:uppercase;font-size:.66rem;letter-spacing:.1em}
+.r-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 10px;padding:12px 0}
+.r-item + .r-item{border-top:1px dotted color-mix(in srgb,var(--paper-muted) 60%,transparent)}
+.r-item .q{color:var(--paper-muted);padding-top:.2em}
+.r-item h3{font-family:var(--body);font-stretch:100%;font-weight:700;font-size:1.02rem;line-height:1.3;letter-spacing:0;color:#121109}
+.r-item p{grid-column:2;font-family:var(--body);font-size:.95rem;line-height:1.5;color:#4A473E}
+.r-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.r-total b{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:1.9rem;letter-spacing:-.01em;color:#A1342D;text-transform:none}
+.barcode{height:54px;margin:18px auto 8px;width:80%;background:repeating-linear-gradient(90deg,var(--paper-ink) 0 2px,transparent 2px 4px,var(--paper-ink) 4px 5px,transparent 5px 8px,var(--paper-ink) 8px 11px,transparent 11px 12px,var(--paper-ink) 12px 13px,transparent 13px 17px)}
+.receipt .foot{color:var(--paper-muted);font-size:.66rem}
+@media (max-width:900px){.receipt-copy{grid-column:1 / -1;position:static}.receipt-wrap{grid-column:1 / -1;margin:28px auto 0}}
 
-  /* ---------- why now strip ---------- */
-  .why { padding: clamp(40px, 6vw, 64px) 0; border-top: 1px solid var(--line-soft); }
-  .why__grid { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 28px; align-items: end; }
-  .why__lead { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px); line-height: 1.12; }
-  .why__lead span { color: var(--dim); }
-  .stat .num { display: block; font-size: clamp(34px, 4vw, 52px); font-weight: 500; letter-spacing: -.02em; line-height: 1; color: var(--text); }
-  .stat .num em { font-style: normal; color: var(--gold); }
-  .stat small { display: block; margin-top: 10px; color: var(--dim); font-size: 14px; line-height: 1.4; }
-  .src { font-size: 12.5px; color: var(--faint); margin-top: 28px; }
-  .src a { color: var(--dim); text-underline-offset: 3px; }
-  @media (max-width: 860px) { .why__grid { grid-template-columns: 1fr 1fr; } .why__lead { grid-column: 1 / -1; } }
-  @media (max-width: 480px) { .why__grid { grid-template-columns: 1fr; } }
+/* ================= B. scrollytelling ================= */
+.scrolly{align-items:start}
+.scrolly-stage{grid-column:1 / span 5;position:sticky;top:84px;height:min(760px,calc(100vh - 110px));display:grid;place-items:center}
+.scrolly-stage .phone{width:min(330px,100%,calc((100vh - 170px) * 390 / 844))}
+.steps{grid-column:7 / -1;display:flex;flex-direction:column}
+.step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;gap:18px;border-top:1px solid var(--band-line);padding-block:40px;transition:opacity .5s var(--ease)}
+.js .step{opacity:.45}
+.js .step.is-active{opacity:1}
+.step:first-child{border-top:0}
+.step .k{font-family:var(--mono);font-stretch:88%;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--band-accent)}
+.step h3{font-size:var(--step-3);font-stretch:108%;font-weight:800;line-height:.95}
+.step p{max-width:44ch;color:var(--band-muted);font-size:var(--step-1);line-height:1.45}
+.step p b{color:var(--band-fg);font-weight:600}
+.step-shot{display:none}
+@media (max-width:900px){
+  .scrolly-stage{display:none}
+  .steps{grid-column:1 / -1}
+  .step,.js .step{min-height:0;opacity:1;padding-block:44px}
+  .step-shot{display:block;width:min(320px,100%);max-height:560px;object-fit:cover;object-position:top;border-radius:20px;margin-top:10px;border:1px solid var(--band-line)}
+}
 
-  /* ---------- problem: set as a printed receipt ---------- */
-  .problem__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
-  .receipt { position: relative; background: var(--paper); color: var(--paper-ink); padding: 34px clamp(22px, 3vw, 36px) 44px; font-family: var(--mono);
-    transform: rotate(1.2deg); box-shadow: 0 40px 70px -30px rgba(0,0,0,.8);
-    -webkit-mask: linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom/16px 9px repeat-x;
-            mask: linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom/16px 9px repeat-x; }
-  .receipt__head { text-align: center; font-size: 13px; letter-spacing: .12em; }
-  .receipt__head small { display: block; color: var(--paper-dim); letter-spacing: .04em; margin-top: 4px; font-size: 11.5px; }
-  .receipt hr { border: 0; border-top: 1.5px dashed #a7a397; margin: 20px 0; }
-  .item { display: grid; grid-template-columns: 26px 1fr; gap: 6px 10px; padding: 12px 0; }
-  .item + .item { border-top: 1px dotted #c2beb1; }
-  .item .q { color: var(--paper-dim); font-size: 13px; padding-top: 3px; }
-  .item h3 { font-family: var(--sans); font-weight: 700; font-size: 17px; line-height: 1.3; color: #16150F; }
-  .item p { grid-column: 2; font-family: var(--sans); font-size: 15px; line-height: 1.5; color: #4A473E; }
-  .receipt__total { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; letter-spacing: .06em; }
-  .receipt__total b { font-family: var(--serif); font-weight: 400; font-size: 30px; letter-spacing: 0; color: #A1342D; }
-  .receipt__foot { text-align: center; font-size: 11.5px; color: var(--paper-dim); margin-top: 16px; }
-  @media (max-width: 860px) { .problem__grid { grid-template-columns: minmax(0, 1fr); } .receipt { transform: none; } }
+/* ================= C. NFC Airdrop flow ================= */
+.nfc-flow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:24px;align-items:center}
+.nfc-flow-head{display:flex;flex-direction:column;gap:12px}
+.nfc-flow-head .mono{color:var(--band-accent)}
+.nfc-flow-head p{color:var(--band-muted);max-width:26ch}
+.nfc-flow ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,3vw,40px);counter-reset:n}
+.nfc-flow li{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;counter-increment:n;min-width:0}
+.nfc-flow li .phone{width:100%;max-width:230px;margin-bottom:12px}
+.nfc-flow li b{font-family:var(--display);font-stretch:100%;font-weight:750;font-size:1.05rem}
+.nfc-flow li b::before{content:counter(n) "\00a0\00a0";font-family:var(--mono);font-size:.7rem;color:var(--band-accent);vertical-align:.15em}
+.nfc-flow li span{color:var(--band-muted);font-size:.9rem}
+.nfc-flow li:nth-child(2) .phone{transform:translateY(-18px)}
+.nfc-flow li:nth-child(2) .phone .rings{bottom:-30px;width:100px;height:100px}
+.flow-links{margin-top:clamp(36px,5vw,56px);padding-top:22px;border-top:1px solid var(--band-line);justify-content:space-between}
+@media (max-width:900px){.nfc-flow{grid-template-columns:1fr}.nfc-flow li .phone{padding:7px;border-radius:28px}.nfc-flow li .phone::before{width:40px;height:12px;top:12px}.nfc-flow li .phone .screen{border-radius:22px}}
+@media (max-width:520px){.nfc-flow ol{gap:10px}.nfc-flow li b{font-size:.86rem}.nfc-flow li span{font-size:.78rem}.nfc-flow li:nth-child(2) .phone{transform:translateY(-10px)}}
 
-  /* ---------- product tabs ---------- */
-  .product__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: clamp(40px, 6vw, 96px); align-items: center; margin-top: clamp(48px, 6vw, 72px); }
-  .tabs { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
-  .tab { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; padding: 24px 4px 24px 0;
-    border-bottom: 1px solid var(--line); position: relative; }
-  .tab::before { content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: 0; background: var(--emerald); }
-  .tab[aria-selected="true"]::before { animation: tabbar var(--dur, 6s) linear forwards; }
-  .tab.paused[aria-selected="true"]::before, .tab.static[aria-selected="true"]::before { animation: none; width: 100%; }
-  @keyframes tabbar { to { width: 100%; } }
-  .tab__k { font: 500 12px var(--mono); color: var(--faint); letter-spacing: .1em; text-transform: uppercase; grid-column: 1 / -1; }
-  .tab__t { font-family: var(--serif); font-size: clamp(24px, 2.4vw, 30px); line-height: 1.1; color: var(--faint); transition: color .25s; }
-  .tab[aria-selected="true"] .tab__t, .tab:hover .tab__t { color: var(--text); }
-  .tab__d { grid-column: 1 / -1; color: var(--dim); font-size: 16px; max-width: 46ch; display: none; }
-  .tab[aria-selected="true"] .tab__d { display: block; }
-  .tab:focus-visible { outline-offset: -2px; }
-  .product__stage { display: flex; justify-content: center; }
-  .product__stage .phone { max-width: 320px; }
-  .product__stage .phone__screen img { transition: opacity .45s var(--ease); }
-  .product__stage .phone__screen img.out { opacity: 0; }
-  @media (max-width: 860px) {
-    .product__grid { grid-template-columns: minmax(0, 1fr); }
-    .product__stage { order: -1; }
-  }
+/* ================= business model ================= */
+.model-grid{align-items:center}
+.flywheel{grid-column:1 / span 6;width:100%;max-width:540px;justify-self:center}
+.flywheel text{font-family:var(--body)}
+.flywheel .t{font-family:var(--display);font-stretch:125%;font-weight:900}
+.rev{grid-column:7 / -1;border-top:1px solid var(--band-line)}
+.rev-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 20px;padding:22px 0;border-bottom:1px solid var(--band-line);align-items:baseline}
+.rev-row h3{font-size:var(--step-2);font-stretch:108%}
+.rev-row .price{font-family:var(--mono);font-stretch:88%;font-size:.78rem;color:var(--signal);white-space:nowrap;letter-spacing:.02em}
+.rev-row p{grid-column:1 / -1;color:var(--band-muted);max-width:52ch}
+.loop{display:none;list-style:none;margin:0;padding:0;counter-reset:l;grid-column:1 / -1;border-top:1px solid var(--band-line)}
+.loop li{counter-increment:l;display:grid;grid-template-columns:34px minmax(0,1fr);gap:2px 10px;padding:14px 0;border-bottom:1px dashed var(--band-line)}
+.loop li::before{content:counter(l,decimal-leading-zero);font-family:var(--mono);font-size:.7rem;color:var(--band-accent);padding-top:.35em;grid-row:span 2}
+.loop b{font-weight:650}.loop span{color:var(--band-muted);font-size:.95rem}
+@media (max-width:900px){.flywheel,.rev{grid-column:1 / -1}.rev{margin-top:24px}}
+@media (max-width:600px){.flywheel{display:none}.loop{display:block}.rev-row{grid-template-columns:minmax(0,1fr)}.rev-row .price{white-space:normal}}
 
-  /* ---------- how it works ---------- */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); margin-top: clamp(48px, 6vw, 72px); position: relative; }
-  .step { display: flex; flex-direction: column; gap: 18px; }
-  .step .phone { max-width: 250px; margin: 0 auto; border-radius: 40px; }
-  .step .phone__screen { border-radius: 32px; }
-  .step__n { font: 500 12px var(--mono); letter-spacing: .12em; color: var(--emerald); display: flex; align-items: center; gap: 12px; }
-  .step__n::after { content: ""; flex: 1; border-top: 1px dashed var(--line); }
-  .step:last-child .step__n::after { display: none; }
-  .step h3 { font-family: var(--serif); font-size: 26px; line-height: 1.12; }
-  .step p { color: var(--dim); font-size: 15.5px; }
-  @media (max-width: 860px) { .steps { grid-template-columns: minmax(0, 1fr); gap: 64px; } .step .phone { max-width: 270px; } }
+/* ================= D. proof row ================= */
+.proof{align-items:start}
+.browser{grid-column:1 / span 8;border-radius:16px;overflow:hidden;border:1px solid var(--band-line);background:#0d1210;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);min-width:0}
+.browser .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--band-line);background:var(--band-2);min-width:0}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:var(--band-line);flex-shrink:0}
+.browser .url{margin-left:10px;font-family:var(--mono);font-stretch:88%;font-size:.68rem;color:var(--band-muted);background:var(--band);padding:.3rem .7rem;border-radius:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.browser .tabs{display:flex;gap:6px;margin-left:auto;flex-shrink:0}
+.browser .tabs button{font:inherit;font-family:var(--mono);font-stretch:88%;font-size:.64rem;letter-spacing:.04em;padding:.35rem .6rem;border-radius:6px;border:1px solid var(--band-line);background:transparent;color:var(--band-muted);cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.browser .tabs button:hover{color:var(--band-fg)}
+.browser .tabs button[aria-pressed="true"]{background:var(--band-accent);color:var(--on-accent);border-color:var(--band-accent)}
+.browser .view{position:relative;aspect-ratio:16/10;display:block}
+.browser .view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .5s var(--ease)}
+.browser .view img.on{opacity:1}
+.browser .view .open{position:absolute;right:14px;bottom:14px;z-index:2;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .4s var(--ease)}
+.browser .view:hover .open,.browser .view:focus-visible .open{opacity:1;transform:none}
+.video-col{grid-column:9 / -1;display:flex;flex-direction:column;gap:16px;align-items:center}
+.video-col .phone{width:min(270px,100%)}
+.mods{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--band-line);margin-top:clamp(48px,7vw,88px)}
+.mod{padding:20px 24px 20px 0;border-bottom:1px solid var(--band-line);display:flex;flex-direction:column;gap:6px;min-width:0}
+.mod:not(:nth-child(3n+1)){padding-left:24px;border-left:1px solid var(--band-line)}
+.mod div{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.mod h3{font-family:var(--body);font-stretch:100%;font-weight:650;font-size:1.05rem;letter-spacing:0;line-height:1.25}
+.mod p{color:var(--band-muted);font-size:.93rem}
+.tag-live{font-family:var(--mono);font-stretch:88%;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--band-accent);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.tag-live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--band-accent)}
+.facts{grid-column:1 / -1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--band-line);margin-top:clamp(40px,6vw,72px)}
+.fact{padding:24px 24px 8px 0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.fact + .fact{padding-left:24px;border-left:1px solid var(--band-line)}
+.fact .mono{color:var(--band-accent)}
+.fact p{color:var(--band-muted);font-size:.96rem}
+.fact p b{color:var(--band-fg);font-weight:600}
+.proof-cta{grid-column:1 / -1;margin-top:36px}
+@media (max-width:900px){
+  .browser,.video-col{grid-column:1 / -1}
+  .mods{grid-template-columns:1fr 1fr}
+  .mod:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .mod:nth-child(even){padding-left:20px;border-left:1px solid var(--band-line)}
+  .facts{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){padding-left:0;border-left:0}
+  .fact{border-top:1px solid var(--band-line)}
+}
+@media (max-width:560px){.mods{grid-template-columns:1fr}.mod:nth-child(even){padding-left:0;border-left:0}.facts{grid-template-columns:1fr}.fact + .fact{padding-left:0;border-left:0}.browser .tabs{display:none}}
 
-  .videos { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-top: clamp(64px, 8vw, 104px); }
-  .vcard { margin: 0; display: flex; flex-direction: column; gap: 16px; }
-  .vcard__media { position: relative; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: var(--ink-2); }
-  .vcard__media video, .vcard__media iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; display: block; }
-  .vcard figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; padding: 0 4px; }
-  .vcard figcaption strong { font-family: var(--serif); font-weight: 400; font-size: clamp(21px, 2vw, 26px); }
-  .vcard figcaption span { font: 400 13px var(--mono); color: var(--faint); }
-  .video__play { all: unset; position: absolute; inset: 0; cursor: pointer; overflow: hidden;
-    background: radial-gradient(60% 80% at 70% 30%, rgba(63,175,125,.18), transparent 70%), linear-gradient(160deg, #13201A, #0A110E); }
-  .video__play:focus-visible { outline: 2px solid var(--emerald); outline-offset: -4px; }
-  .cover-slip { position: absolute; left: 12%; top: 16%; width: 34%; padding: 5% 4% 7%; background: var(--paper); transform: rotate(-7deg);
-    display: flex; flex-direction: column; gap: 9%; box-shadow: 0 30px 50px -20px rgba(0,0,0,.7);
-    -webkit-mask: linear-gradient(#000 0 0) top/100% calc(100% - 6px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom/10px 6px repeat-x;
-            mask: linear-gradient(#000 0 0) top/100% calc(100% - 6px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom/10px 6px repeat-x; }
-  .cover-slip b { font: 500 clamp(7px, .8vw, 11px) var(--mono); color: var(--paper-ink); text-align: center; letter-spacing: .06em; }
-  .cover-slip i { display: block; height: 5px; border-radius: 3px; background: #CFCABB; }
-  .cover-slip i.s { width: 60%; }
-  .cover-slip em { font: 500 clamp(7px, .8vw, 11px) var(--mono); font-style: normal; color: var(--paper-ink); border-top: 1px dashed #9a968a; padding-top: 8%; }
-  .video__btn { position: absolute; top: 50%; left: 58%; width: 76px; height: 76px; margin: -38px 0 0 -38px; border-radius: 50%; background: var(--emerald); display: grid; place-items: center;
-    box-shadow: 0 20px 50px -14px rgba(63,175,125,.6); transition: transform .25s var(--ease); }
-  .video__play:hover .video__btn { transform: scale(1.06); }
-  .video__btn svg { width: 26px; height: 26px; margin-left: 4px; color: #04130B; }
-  @media (max-width: 760px) { .videos { grid-template-columns: minmax(0, 1fr); gap: 40px; } }
+/* ================= team ================= */
+.team-grid{align-items:start}
+.founder{grid-column:4 / -1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px;border-top:1px solid var(--band-line);padding-top:28px}
+.founder h3{font-size:var(--step-3);font-stretch:118%;font-weight:900;line-height:.9}
+.founder .mono{color:var(--band-accent);margin-top:12px;display:block}
+.founder p{color:var(--band-muted);font-size:var(--step-1);line-height:1.45;max-width:40ch}
+.founder .edu{margin-top:14px;font-size:.9rem;color:var(--band-muted)}
+@media (max-width:900px){.founder{grid-column:1 / -1;grid-template-columns:1fr}}
 
-  /* ---------- business model ---------- */
-  .model__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center; margin-top: clamp(48px, 6vw, 72px); }
-  .flywheel { width: 100%; max-width: 520px; margin: 0 auto; }
-  .flywheel text { font-family: var(--sans); } .flywheel .fw-title { font-family: var(--serif); }
-  .rev { display: grid; gap: 14px; min-width: 0; }
-  .rev__card { min-width: 0; border: 1px solid var(--line); border-radius: 20px; padding: 24px 26px; background: var(--ink-2); display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; align-items: baseline; }
-  .rev__card h3 { font-family: var(--serif); font-size: 24px; }
-  .rev__card .price { font: 500 15px var(--mono); color: var(--gold); white-space: nowrap; }
-  .rev__card p { grid-column: 1 / -1; color: var(--dim); font-size: 15.5px; }
-  .rev__card--hl { border-color: var(--emerald-line); background: linear-gradient(180deg, rgba(63,175,125,.08), transparent 70%), var(--ink-2); }
-  @media (max-width: 860px) { .model__grid { grid-template-columns: minmax(0, 1fr); } }
-  @media (max-width: 560px) { .rev__card { grid-template-columns: minmax(0, 1fr); } .rev__card .price { white-space: normal; } }
-  .loop { display: none; list-style: none; margin: 0; padding: 0; counter-reset: loop; }
-  .loop li { counter-increment: loop; display: grid; grid-template-columns: 34px 1fr; gap: 4px 12px; padding: 16px 0; border-bottom: 1px dashed var(--line); }
-  .loop li::before { content: counter(loop, decimal-leading-zero); font: 500 12px var(--mono); color: var(--emerald); padding-top: 4px; grid-row: span 2; }
-  .loop strong { font-weight: 650; } .loop span { color: var(--dim); font-size: 15px; }
-  .loop li:last-child span::after { content: " — and the loop starts again."; }
-  @media (max-width: 600px) { .flywheel { display: none; } .loop { display: block; } }
+/* ================= access + F. investor teaser ================= */
+.access-grid{align-items:start;margin-top:clamp(40px,6vw,72px)}
+.join{grid-column:1 / span 5;display:flex;flex-direction:column;gap:20px;border-top:1px solid var(--band-line);padding-top:26px}
+.join h3,.inv-body h3{font-size:var(--step-2);font-stretch:108%}
+.join p{color:var(--band-muted)}
+.as{display:flex;gap:6px;flex-wrap:wrap}
+.as label{position:relative;cursor:pointer}
+.as input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.as span{display:inline-block;font-family:var(--mono);font-stretch:88%;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:.5rem .8rem;border-radius:999px;border:1px solid var(--band-line);color:var(--band-muted);transition:background .25s,color .25s,border-color .25s}
+.as input:checked + span{background:var(--band-fg);color:var(--band);border-color:var(--band-fg)}
+.as input:focus-visible + span{outline:2px solid var(--band-accent);outline-offset:3px}
+.small{font-size:.82rem;color:var(--band-muted)}
+.inv{grid-column:7 / -1;border-radius:26px;overflow:hidden;border:1px solid var(--band-line);background:var(--band-2);transition:transform .7s var(--ease),box-shadow .7s var(--ease);min-width:0}
+.inv:hover{transform:translateY(-6px);box-shadow:0 50px 80px -50px rgba(0,0,0,.7)}
+.inv-media{position:relative;height:clamp(300px,30vw,400px);overflow:hidden;background:radial-gradient(80% 90% at 50% 100%,color-mix(in srgb,var(--band-accent) 30%,transparent),transparent 70%);display:block}
+.inv-media .phone{position:absolute;width:clamp(150px,13vw,190px);bottom:-70px;left:50%;transition:transform 1s var(--ease)}
+.inv-media .phone.a{transform:translateX(-108%) rotate(-6deg)}
+.inv-media .phone.b{transform:translateX(8%) translateY(-24px) rotate(5deg)}
+.inv:hover .inv-media .phone.a{transform:translateX(-112%) translateY(-18px) rotate(-8deg)}
+.inv:hover .inv-media .phone.b{transform:translateX(12%) translateY(-44px) rotate(7deg)}
+.inv-media .ring{position:absolute;left:50%;top:44%;width:90px;height:90px;transform:translate(-50%,-50%);pointer-events:none}
+.inv-media .ring i{position:absolute;inset:0;border-radius:50%;border:2px solid var(--band-accent);opacity:0;animation:ring 2.6s infinite var(--ease)}
+.inv-media .ring i:nth-child(2){animation-delay:1.3s}
+.inv-body{padding:24px 26px 26px;display:flex;flex-direction:column;gap:14px}
+.inv-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.inv-meta .mono{color:var(--band-muted)}
+.inv-meta .mono:first-child{display:inline-flex;align-items:center;gap:8px;color:var(--signal)}
+.inv-body p{color:var(--band-muted);max-width:46ch}
+.inv form{display:flex;flex-direction:column;gap:8px}
+.inv form > .field{flex:none;width:100%}
+.inv-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-top:6px;padding-top:14px;border-top:1px solid var(--band-line)}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pills a{font-size:.82rem;text-decoration:none;padding:.42rem .75rem;border-radius:999px;border:1px solid var(--band-line);display:inline-flex;align-items:center;gap:.35rem;transition:background .25s,color .25s,border-color .25s}
+.pills a:hover{background:var(--band-accent);border-color:var(--band-accent);color:var(--on-accent)}
+.pills a:hover .ic.ext{transform:translate(2px,-2px)}
+@media (max-width:900px){.join,.inv{grid-column:1 / -1}.inv{margin-top:40px}.inv-media .phone{width:140px}}
 
-  /* ---------- built ---------- */
-  .built { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin-top: clamp(48px, 6vw, 72px); }
-  .mod { padding: 26px 26px 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
-  .mod__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-  .mod h3 { font-size: 18px; font-weight: 650; }
-  .mod p { color: var(--dim); font-size: 15px; }
-  .pill { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 5px 9px; border-radius: 999px; color: var(--emerald); background: var(--emerald-wash); border: 1px solid var(--emerald-line); white-space: nowrap; }
-  .built__cta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; margin-top: 32px; color: var(--dim); }
-  @media (max-width: 900px) { .built { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px) { .built { grid-template-columns: 1fr; } }
+/* footer */
+footer{border-top:1px solid var(--band-line);padding-block:36px 56px;color:var(--band-muted);font-size:.9rem}
+.foot{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+.foot nav{display:flex;gap:20px;flex-wrap:wrap}
+.foot a{text-decoration:none;color:var(--band-fg)}
+.foot a:hover{color:var(--band-accent)}
+footer .src{margin-top:22px;line-height:1.7}
 
-  /* ---------- team ---------- */
-  .team__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
-  .founder { display: grid; grid-template-columns: 96px 1fr; gap: 22px; padding: 30px; border: 1px solid var(--line); border-radius: 24px; background: var(--ink-2); }
-  .founder__mono { width: 96px; height: 96px; border-radius: 22px; background: var(--paper); color: var(--paper-ink); display: grid; place-items: center; font-family: var(--serif); font-size: 40px; }
-  .founder h3 { font-family: var(--serif); font-size: 30px; line-height: 1.05; }
-  .founder .role { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--emerald); margin-top: 8px; }
-  .founder p { color: var(--dim); font-size: 16px; margin-top: 14px; }
-  .founder a { display: inline-flex; margin-top: 16px; font-size: 14.5px; color: var(--text); text-underline-offset: 4px; }
-  @media (max-width: 860px) { .team__grid { grid-template-columns: minmax(0, 1fr); } }
-  @media (max-width: 460px) { .founder { grid-template-columns: 1fr; } }
-
-  /* ---------- final CTA ---------- */
-  .cta__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: clamp(40px, 5vw, 60px); }
-  .cta-card { border: 1px solid var(--line); border-radius: 26px; padding: clamp(28px, 4vw, 44px); background: var(--ink-2); display: flex; flex-direction: column; gap: 14px; }
-  .cta-card--paper { background: var(--paper); color: var(--paper-ink); border-color: transparent; }
-  .cta-card h3 { font-family: var(--serif); font-size: clamp(28px, 3vw, 38px); line-height: 1.05; }
-  .cta-card p { color: var(--dim); }
-  .cta-card--paper p { color: #555247; }
-  .cta-card form { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
-  .field { display: flex; gap: 8px; flex-wrap: wrap; }
-  .cta-card--paper .field input { background: #fff; color: var(--paper-ink); border-color: #d6d1c3; }
-  .cta-card--paper .field input::placeholder { color: #8d897d; }
-  .cta-card--paper .btn--dark { background: #16150F; color: var(--paper); }
-  .cta-card--paper .btn--dark:hover { background: #2a2920; }
-  .cta-card--paper .form-note.ok { color: #1F7A50; }
-  .cta-card small { font-size: 13px; color: var(--faint); }
-  .cta-card--paper small { color: #7a766a; }
-  @media (max-width: 820px) { .cta__grid { grid-template-columns: minmax(0, 1fr); } }
-
-  footer { border-top: 1px solid var(--line-soft); padding: 40px 0 56px; color: var(--faint); font-size: 14px; }
-  .foot { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }
-  .foot nav { display: flex; gap: 22px; flex-wrap: wrap; }
-  .foot a { color: var(--dim); text-decoration: none; } .foot a:hover { color: var(--text); }
-  .sources { margin-top: 26px; font-size: 12.5px; line-height: 1.7; color: var(--faint); }
-  .sources a { color: var(--dim); text-underline-offset: 3px; }
-
-  /* reveal */
-  .rv { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
-  .rv.in { opacity: 1; transform: none; }
-  .no-js .rv { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .rv { opacity: 1; transform: none; transition: none; }
-    .slip { animation: none; opacity: 1; transform: rotate(-6deg); }
-    .toast { animation: none; opacity: 1; transform: none; }
-    .tab[aria-selected="true"]::before { animation: none; width: 100%; }
-    .product__stage .phone__screen img { transition: none; }
-  }
+/* ================= reveal (readable at rest; JS adds motion) ================= */
+.js [data-reveal]{transform:translateY(36px);opacity:.25;transition:transform 1.1s var(--ease),opacity 1.1s var(--ease)}
+.js [data-reveal].in{transform:none;opacity:1}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .js [data-reveal]{transform:none;opacity:1}
+  .js .receipt[data-print]{clip-path:none}
+  .layer.on.autoscroll img.tall{animation:none}
+  .rings i,.inv-media .ring i{animation:none;opacity:.5;transform:scale(.9)}
+  .rings i:nth-child(2){transform:scale(1.2);opacity:.3}.rings i:nth-child(3){display:none}
+}
 </style>
 </head>
-<body class="no-js">
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mk" viewBox="0 0 22 26"><path d="M2 1.5h18v21l-3-2-3 2-3-2-3 2-3-2-3 2z" fill="#47C48A"/><path d="M6 7h10M6 11h10M6 15h6" stroke="#0F1713" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="ext" viewBox="0 0 16 16"><path d="M5 11L11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="rt" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="dn" viewBox="0 0 16 16"><path d="M8 3v10M4 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
 <header class="nav" id="nav">
-  <div class="wrap nav__inner">
-    <a class="wordmark" href="#top" aria-label="EZZ BILL home">
-      <svg viewBox="0 0 22 26" aria-hidden="true"><path d="M2 1.5h18v21l-3-2-3 2-3-2-3 2-3-2-3 2z" fill="#3FAF7D"/><path d="M6 7h10M6 11h10M6 15h6" stroke="#0A110E" stroke-width="1.8" stroke-linecap="round"/></svg>
-      EZZ BILL
-    </a>
-    <nav class="nav__links" id="navLinks" aria-label="Main">
-      <a href="#problem">Problem</a>
-      <a href="#product">Product</a>
-      <a href="#how">How it works</a>
-      <a href="#model">Business model</a>
-      <a href="#team">Team</a>
-      <a href="#access" class="btn btn--primary">Get early access</a>
-    </nav>
-    <button class="nav__toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="EZZ BILL home"><svg aria-hidden="true"><use href="#mk"/></svg>EZZ BILL</a>
+    <ul id="navLinks">
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#product">Product</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#model">Business model</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#investors">For investors</a></li>
+      <li class="m-only"><a class="btn primary" href="#access">Get early access</a></li>
+    </ul>
+    <a class="live status" href="#investors"><span class="dot gold"></span>Raising pre-seed</a>
+    <a class="btn primary cta magnetic" href="#access">Get early access</a>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </div>
+  <div class="progress" id="progress"></div>
 </header>
 
 <main id="top">
 
-  <!-- ================= HERO ================= -->
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div class="rv">
-        <p class="label">The digital layer for bills · India</p>
-        <h1>UPI solved payments. We solve <em>what happens after.</em></h1>
-        <p class="hero__sub">Pay anywhere and the bill lands in your phone — itemised, searchable, and working for you: spend insights, warranty alerts, returns and reimbursements, in one place.</p>
-        <form class="waitlist" data-form="waitlist" novalidate>
-          <input type="email" name="email" placeholder="you@email.com" aria-label="Your email" autocomplete="email" required>
-          <input type="hidden" name="type" value="waitlist">
-          <button class="btn btn--primary" type="submit">Get early access</button>
-        </form>
-        <div class="hero__meta">
-          <span class="live-dot">Live product — NFC tap-to-bill working end to end</span>
-          <a href="#how">Watch the demo</a>
-          <a href="#investors">For investors</a>
-        </div>
-      </div>
-
-      <div class="hero__stage rv" aria-label="A paper receipt turning into a digital bill on the EZZ BILL app">
-        <div class="slip" aria-hidden="true">
-          <h4>BLUE TOKAI COFFEE</h4>
-          <div class="c">Koregaon Park · Table 3</div>
-          <hr>
-          <div class="r"><span>2 Cappuccino</span><span>320.00</span></div>
-          <div class="r"><span>1 Almond Croissant</span><span>92.00</span></div>
-          <hr>
-          <div class="r t"><span>TOTAL</span><span>Rs 412.00</span></div>
-          <div class="c" style="margin-top:8px">Paid via UPI</div>
-        </div>
-        <div class="phone">
-          <div class="phone__island"></div>
-          <div class="phone__screen">
-            <div class="phone__status"><span>13:20</span><i><svg width="16" height="10" viewBox="0 0 16 10" fill="#cfd6d2" aria-hidden="true"><rect x="0" y="6" width="3" height="4" rx="1"/><rect x="4.3" y="4" width="3" height="6" rx="1"/><rect x="8.6" y="2" width="3" height="8" rx="1"/><rect x="12.9" y="0" width="3" height="10" rx="1"/></svg><b></b></i></div>
-            <img src="/assets/screens/dashboard.webp" width="780" height="1688" alt="EZZ BILL home screen: ₹25,916 spent in the last 30 days, down 32%, with recent bills from Blue Tokai Coffee and Swiggy">
-          </div>
-          <div class="toast" aria-hidden="true">
-            <div class="toast__icon"><svg viewBox="0 0 22 26"><path d="M2 1.5h18v21l-3-2-3 2-3-2-3 2-3-2-3 2z" fill="#04130B"/><path d="M6 7h10M6 11h10M6 15h6" stroke="#3FAF7D" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-            <div class="toast__body"><strong>Bill received</strong><span>Blue Tokai Coffee · Table 3</span></div>
-            <div class="toast__amt">₹412</div>
-          </div>
-        </div>
-        <p class="stage-caption">Real app screen · demo data</p>
+<!-- ================= A. HERO ================= -->
+<section class="hero">
+  <div class="wrap grid12 hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow fade-in"><span class="dot"></span>The digital layer for bills · India</p>
+      <h1 aria-label="UPI solved payments. We solve what happens after.">
+        <span class="line" aria-hidden="true"><span>UPI solved</span></span>
+        <span class="line" aria-hidden="true"><span>payments.</span></span>
+        <span class="line" aria-hidden="true"><span>We solve what</span></span>
+        <span class="line" aria-hidden="true"><span>happens <em>after.</em></span></span>
+      </h1>
+      <p class="lede fade-in">Pay anywhere and the bill lands in your phone — itemised, searchable, and working for you: spend insights, warranty alerts, returns and reimbursements, in one place.</p>
+      <form class="waitlist fade-in" data-form="waitlist" novalidate>
+        <input class="field" type="email" name="email" placeholder="you@email.com" aria-label="Your email" autocomplete="email" required>
+        <input type="hidden" name="type" value="waitlist">
+        <button class="btn primary magnetic" type="submit">Get early access <svg class="ic rt" aria-hidden="true"><use href="#rt"/></svg></button>
+      </form>
+      <div class="hero-meta fade-in">
+        <a class="live" href="https://ezbill.live" target="_blank" rel="noopener"><span class="dot"></span>NFC tap-to-bill is live <svg class="ic ext" aria-hidden="true"><use href="#ext"/></svg></a>
+        <a class="tlink" href="#product">See how it works <svg class="ic dn" aria-hidden="true"><use href="#dn"/></svg></a>
+        <a class="tlink" href="#investors">For investors <svg class="ic rt" aria-hidden="true"><use href="#rt"/></svg></a>
       </div>
     </div>
-  </section>
-
-  <!-- ================= WHY NOW ================= -->
-  <section class="why" aria-label="Why now">
-    <div class="wrap">
-      <div class="why__grid rv">
-        <p class="why__lead">The payment went digital.<br><span>The bill didn't.</span></p>
-        <div class="stat"><span class="num"><em>24.07</em>B</span><small>UPI payments in September 2026 alone</small></div>
-        <div class="stat"><span class="num">802M</span><small>payments every single day</small></div>
-        <div class="stat"><span class="num">+23%</span><small>year-on-year growth in volume</small></div>
-      </div>
-      <p class="src">Source: NPCI monthly data, via <a href="https://startuptalky.com/upi-transactions-september-2026/" target="_blank" rel="noopener">StartupTalky, Oct 2026</a>.</p>
+    <div class="hero-stage">
+      <a class="phone" href="https://ezbill.live/t/t3" target="_blank" rel="noopener" aria-label="Open the live NFC tap demo on ezbill.live">
+        <span class="screen"><img src="/assets/img/ezz-tap-guest.webp" srcset="/assets/img/ezz-tap-guest@1x.webp 300w, /assets/img/ezz-tap-guest.webp 600w" sizes="320px" width="600" height="1298" alt="Guest's phone after tapping the Table 3 tag: Blue Tokai Coffee bill for ₹412 with one-tap sign-in to save" fetchpriority="high"></span>
+        <span class="rings" aria-hidden="true"><i></i><i></i><i></i></span>
+      </a>
+      <p class="cap">Real app · demo data</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= PROBLEM ================= -->
-  <section class="section" id="problem">
-    <div class="wrap problem__grid">
-      <div class="rv">
-        <p class="label">The problem</p>
-        <h2 class="h2">Every payment leaves a bill behind. Almost nobody keeps it.</h2>
-        <p class="lede">What you get after paying is a thermal slip that fades in weeks, an email you'll never find again, or nothing at all. That bill is the only record of <em>what</em> you actually bought — and without it, money quietly leaks away.</p>
-      </div>
-      <div class="receipt rv" role="group" aria-label="What a lost bill costs">
-        <div class="receipt__head">WHAT A LOST BILL COSTS YOU<small>Itemised · Tax invoice not available</small></div>
+<!-- why now (existing facts) -->
+<section class="why" aria-label="Why now">
+  <div class="wrap">
+    <div class="why-grid" data-reveal>
+      <p class="why-lead">The payment went digital.<br><span>The bill didn't.</span></p>
+      <div class="stat"><b><em>24.07</em>B</b><span>UPI payments in September 2026 alone</span></div>
+      <div class="stat"><b>802M</b><span>payments every single day</span></div>
+      <div class="stat"><b>+23%</b><span>year-on-year growth in volume</span></div>
+    </div>
+    <p class="src">Source: NPCI monthly data, via <a href="https://startuptalky.com/upi-transactions-september-2026/" target="_blank" rel="noopener">StartupTalky, Oct 2026</a>.</p>
+  </div>
+</section>
+
+<!-- ================= PROBLEM ================= -->
+<section class="sec" id="problem">
+  <div class="wrap grid12 receipt-grid">
+    <div class="receipt-copy">
+      <p class="eyebrow"><span class="dot"></span>The problem</p>
+      <h2 class="h2" data-reveal>Every payment leaves a bill behind. <span class="g">Almost nobody keeps it.</span></h2>
+      <p class="lede muted" data-reveal>What you get after paying is a thermal slip that fades in weeks, an email you'll never find again, or nothing at all. That bill is the only record of what you actually bought — and without it, money quietly leaks away.</p>
+    </div>
+    <div class="receipt-wrap" data-print-wrap>
+      <div class="printer" aria-hidden="true"><span></span></div>
+      <div class="receipt" data-print role="group" aria-label="What a lost bill costs you">
+        <p class="c">WHAT A LOST BILL COSTS YOU<small>Itemised · Tax invoice not available</small></p>
         <hr>
-        <div class="item"><span class="q">01</span><h3>Reimbursements left unclaimed</h3><p>No bill, no claim. Finance won't pay for a slip you lost in a cab.</p></div>
-        <div class="item"><span class="q">02</span><h3>Warranties you can't prove</h3><p>The laptop dies in month eleven. The invoice is buried in last year's inbox.</p></div>
-        <div class="item"><span class="q">03</span><h3>Spending with zero context</h3><p>Forty UPI entries that say "paid to merchant". None of them say what you bought.</p></div>
-        <div class="item"><span class="q">04</span><h3>Paper that doesn't go away</h3><p>An estimated 93% of paper receipts are coated with BPA or BPS, which makes them hard to recycle and harmful to handle.</p></div>
+        <div class="r-item"><span class="q">01</span><h3>Reimbursements left unclaimed</h3><p>No bill, no claim. Finance won't pay for a slip you lost in a cab.</p></div>
+        <div class="r-item"><span class="q">02</span><h3>Warranties you can't prove</h3><p>The laptop dies in month eleven. The invoice is buried in last year's inbox.</p></div>
+        <div class="r-item"><span class="q">03</span><h3>Spending with zero context</h3><p>Forty UPI entries that say "paid to merchant". None of them say what you bought.</p></div>
+        <div class="r-item"><span class="q">04</span><h3>Paper that doesn't go away</h3><p>An estimated 93% of paper receipts are coated with BPA or BPS, which makes them hard to recycle and harmful to handle.</p></div>
         <hr>
-        <div class="receipt__total"><span>TOTAL RECOVERED</span><b>₹0.00</b></div>
-        <p class="receipt__foot">BPA/BPS figure: Green America, "Skip the Slip" (2022)</p>
+        <div class="r-total"><span>Total recovered</span><b>₹0.00</b></div>
+        <div class="barcode" aria-hidden="true"></div>
+        <p class="c foot">BPA/BPS figure: <a href="https://reports.greenamerica.org/skip-the-slip" target="_blank" rel="noopener" style="color:inherit">Green America, "Skip the Slip" (2022)</a></p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= PRODUCT ================= -->
-  <section class="section" id="product">
-    <div class="wrap">
-      <div class="rv">
-        <p class="label">The product</p>
-        <h2 class="h2">One home for every bill.<br>Then the bill starts working.</h2>
-      </div>
-      <div class="product__grid">
-        <div class="tabs rv" role="tablist" aria-label="Product features">
-          <button class="tab" role="tab" id="tab-collect" aria-controls="productStage" aria-selected="true" data-screen="/assets/screens/all-bills.webp" data-alt="All Bills screen: 46 bills totalling ₹49,118, filterable by NFC bills and category">
-            <span class="tab__k">Collect</span><span class="tab__t">Every bill, from everywhere</span>
-            <span class="tab__d">Gmail receipts, camera snaps, PDFs and NFC table taps land in one feed — read by AI, itemised and categorised automatically.</span>
-          </button>
-          <button class="tab" role="tab" id="tab-leaks" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/money-leaks.webp" data-alt="Money Leaks screen: ₹2,311 leaked this month, Leak Score 49 out of 100, biggest leak is food">
-            <span class="tab__k">Money Leaks</span><span class="tab__t">A score for where money quietly leaks</span>
-            <span class="tab__d">Your spending against an ideal budget built for your income, city and lifestyle — plus the one fix that saves you the most.</span>
-          </button>
-          <button class="tab" role="tab" id="tab-warranty" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/warranties.webp" data-alt="Warranties screen: MacBook Air, Sony headphones with 21 days left, and an LG washer, each with purchase and expiry dates">
-            <span class="tab__k">Warranty vault</span><span class="tab__t">Never lose a warranty again</span>
-            <span class="tab__d">Purchase date, expiry countdown and claim steps for everything you own — flagged before it lapses, not after.</span>
-          </button>
-          <button class="tab" role="tab" id="tab-subs" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/subscriptions.webp" data-alt="Subscriptions screen: ₹2,491 per month across 5 active subscriptions, next renewal iCloud+ on 28 October">
-            <span class="tab__k">Subscriptions</span><span class="tab__t">Every renewal, before it charges</span>
-            <span class="tab__d">Detected straight from your inbox: what you pay, when it renews, and which ones you forgot you had.</span>
-          </button>
-        </div>
-        <div class="product__stage rv" id="productStage" role="tabpanel" aria-labelledby="tab-collect">
-          <div class="phone">
-            <div class="phone__island"></div>
-            <div class="phone__screen">
-              <div class="phone__status"><span>13:20</span><i><b></b></i></div>
-              <img id="productImg" src="/assets/screens/all-bills.webp" width="780" height="1688" alt="All Bills screen: 46 bills totalling ₹49,118, filterable by NFC bills and category" loading="lazy">
-            </div>
-          </div>
-        </div>
+<!-- ================= B. PRODUCT: scrollytelling ================= -->
+<section class="sec" id="product">
+  <div class="wrap">
+    <div class="grid12 sec-head">
+      <p class="eyebrow"><span class="dot"></span>The product · how EZZ BILL works</p>
+      <div class="t">
+        <h2 class="title" data-reveal>AirDrop<br>for <span class="g">bills.</span></h2>
+        <p class="lede muted" data-reveal>Your spending lives in a dozen places: Gmail invoices, UPI texts, paper receipts, subscriptions that renew quietly. EZZ BILL pulls it in automatically and shows you where the money leaks.</p>
       </div>
     </div>
-  </section>
 
-  <!-- ================= HOW IT WORKS ================= -->
-  <section class="section" id="how">
-    <div class="wrap">
-      <div class="rv">
-        <p class="label">NFC Airdrop · live today</p>
-        <h2 class="h2">Tap the table. The bill is yours.</h2>
-        <p class="lede">No app to download, no QR to scan, no email to type. One tag per table hands each guest their own bill — then hands the next guest theirs.</p>
+    <div class="grid12 scrolly">
+      <div class="scrolly-stage" aria-hidden="true">
+        <a class="phone" id="stagePhone" href="https://ezbill.live" target="_blank" rel="noopener" tabindex="-1">
+          <span class="screen">
+            <span class="layer on" data-i="0"><img class="fit" src="/assets/img/ezz-tap-guest.webp" alt="" width="600" height="1298"></span>
+            <span class="layer autoscroll" data-i="1"><img class="tall" src="/assets/img/ez-home.webp" alt="" width="600" height="2957" loading="lazy"></span>
+            <span class="layer autoscroll" data-i="2"><img class="tall" src="/assets/img/ez-money-leaks.webp" alt="" width="600" height="3665" loading="lazy"></span>
+            <span class="layer autoscroll" data-i="3"><img class="tall" src="/assets/img/ez-subscriptions.webp" alt="" width="600" height="2272" loading="lazy"></span>
+            <span class="layer autoscroll" data-i="4"><img class="tall" src="/assets/img/ez-splits.webp" alt="" width="600" height="2118" loading="lazy"></span>
+            <span class="layer autoscroll" data-i="5"><img class="tall" src="/assets/img/ez-warranties.webp" alt="" width="600" height="1432" loading="lazy"></span>
+          </span>
+          <span class="rings" id="stageRings"><i></i><i></i><i></i></span>
+        </a>
       </div>
       <div class="steps">
-        <div class="step rv">
-          <span class="step__n">STEP 1</span>
-          <div class="phone"><div class="phone__island"></div><div class="phone__screen"><div class="phone__status"><span>13:18</span><i><b></b></i></div>
-            <img src="/assets/screens/staff.webp" width="780" height="1688" alt="Staff console: Table 3 and Counter show bills ready to tap; Table 12 and Table 7 are open" loading="lazy"></div></div>
-          <h3>Staff send the bill</h3>
-          <p>Enter the total, snap the printed bill. The table's tag is armed in seconds — and every table's status is live on one screen.</p>
-        </div>
-        <div class="step rv">
-          <span class="step__n">STEP 2</span>
-          <div class="phone"><div class="phone__island"></div><div class="phone__screen"><div class="phone__status"><span>13:19</span><i><b></b></i></div>
-            <img src="/assets/screens/tap-guest.webp" width="780" height="1688" alt="Guest's phone after tapping the table tag: Blue Tokai Coffee receipt for ₹412 with sign-in to save" loading="lazy"></div></div>
-          <h3>The guest taps the tag</h3>
-          <p>Any phone opens the bill instantly. AI reads every line item while they sign in with one tap.</p>
-        </div>
-        <div class="step rv">
-          <span class="step__n">STEP 3</span>
-          <div class="phone"><div class="phone__island"></div><div class="phone__screen"><div class="phone__status"><span>13:20</span><i><b></b></i></div>
-            <img src="/assets/screens/bill-detail.webp" width="780" height="1688" alt="Saved bill: Blue Tokai Coffee, Food and Dining, paid by UPI, with itemised Cappuccino and Almond Croissant" loading="lazy"></div></div>
-          <h3>Filed, itemised, forever</h3>
-          <p>Saved and categorised in their EZZ BILL, right next to every other bill — ready to split, claim or search.</p>
-        </div>
-      </div>
-
-      <div class="videos">
-        <figure class="vcard rv">
-          <div class="vcard__media">
-            <video id="walkthrough" muted loop playsinline preload="none" poster="/assets/video/walkthrough-poster.webp" aria-label="24-second walkthrough: pay, tap the table tag, bill saved, then insights">
-              <source src="/assets/video/walkthrough-720p.webm" type="video/webm">
-              <source src="/assets/video/walkthrough-720p.mp4" type="video/mp4">
-            </video>
-          </div>
-          <figcaption><strong>The 24-second walkthrough</strong><span>Real app screens</span></figcaption>
-        </figure>
-        <figure class="vcard rv">
-          <div class="vcard__media" id="demoVideo">
-            <button class="video__play" type="button" aria-label="Play the EZZ BILL real-world demo on YouTube">
-              <span class="cover-slip" aria-hidden="true"><b>BLUE TOKAI COFFEE</b><i></i><i></i><i class="s"></i><em>TOTAL&nbsp;&nbsp;Rs 412.00</em></span>
-              <span class="video__btn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg></span>
-            </button>
-          </div>
-          <figcaption><strong>See it work in the real world</strong><span>Live demo · YouTube</span></figcaption>
-        </figure>
+        <article class="step is-active" data-i="0">
+          <p class="k">NFC Airdrop · pilot</p>
+          <h3>Tap the table. The bill is already on your phone.</h3>
+          <p>Staff snap the closed bill and arm the table's NFC tag. The guest taps, the itemised bill opens on any phone and saves to EZZ BILL. <b>No POS integration</b>, and bills expire in minutes so nobody sees a stranger's receipt.</p>
+          <div class="chips"><span class="chip">Supabase Realtime</span><span class="chip">Signed, short-lived URLs</span><span class="chip">Tap behaviour tested with Racked</span></div>
+          <img class="step-shot" src="/assets/img/ezz-tap-guest@1x.webp" srcset="/assets/img/ezz-tap-guest@1x.webp 300w, /assets/img/ezz-tap-guest.webp 600w" sizes="(max-width:900px) 320px, 0px" width="600" height="1298" alt="Guest's phone after tapping a table tag: Blue Tokai Coffee bill for ₹412" loading="lazy">
+        </article>
+        <article class="step" data-i="1">
+          <p class="k">Zero-effort capture</p>
+          <h3>Nobody types in expenses. So EZZ BILL doesn't ask you to.</h3>
+          <p>Read-only Gmail import, UPI SMS parsing on Android, and AI receipt scanning that pulls out <b>every line item</b>. A merchant map tuned for India (Swiggy, Zepto, IRCTC, Jio) files it all automatically.</p>
+          <div class="chips"><span class="chip">Gmail read-only OAuth</span><span class="chip">Gemini 2.5 Flash</span><span class="chip">GPT-5-mini fallback</span></div>
+          <img class="step-shot" src="/assets/img/ez-home@1x.webp" srcset="/assets/img/ez-home@1x.webp 300w, /assets/img/ez-home.webp 600w" sizes="(max-width:900px) 320px, 0px" width="600" height="2957" alt="EZZ BILL home: ₹24,986 spent in the last 30 days, Money Leaked card and recent bills" loading="lazy">
+        </article>
+        <article class="step" data-i="2">
+          <p class="k">Money Leaks</p>
+          <h3>See the gap between what you spend and what you should.</h3>
+          <p>A six-question money profile builds a <b>personal ideal budget</b> for each category, compares it with real spending and shows the leak in rupees, plus a safe daily spend until payday.</p>
+          <img class="step-shot" src="/assets/img/ez-money-leaks@1x.webp" srcset="/assets/img/ez-money-leaks@1x.webp 300w, /assets/img/ez-money-leaks.webp 600w" sizes="(max-width:900px) 320px, 0px" width="600" height="3665" alt="Money Leaks: ₹2,311 leaked this month, Leak Score 49 out of 100, biggest leak is food" loading="lazy">
+        </article>
+        <article class="step" data-i="3">
+          <p class="k">Subscription radar</p>
+          <h3>Find the subscriptions you forgot you pay for.</h3>
+          <p>Recurring merchants are detected by cadence and amount, then marked <b>active, low-use, unused or duplicate</b>.</p>
+          <img class="step-shot" src="/assets/img/ez-subscriptions@1x.webp" srcset="/assets/img/ez-subscriptions@1x.webp 300w, /assets/img/ez-subscriptions.webp 600w" sizes="(max-width:900px) 320px, 0px" width="600" height="2272" alt="Subscriptions: ₹2,491 a month across 5 active subscriptions, next renewal iCloud+" loading="lazy">
+        </article>
+        <article class="step" data-i="4">
+          <p class="k">Smart Split</p>
+          <h3>Split it item by item. Settle it later.</h3>
+          <p>Split any bill by line item or equally, with tax and discounts shared out proportionally. A <b>friends ledger</b> tracks who owes whom.</p>
+          <img class="step-shot" src="/assets/img/ez-splits@1x.webp" srcset="/assets/img/ez-splits@1x.webp 300w, /assets/img/ez-splits.webp 600w" sizes="(max-width:900px) 320px, 0px" width="600" height="2118" alt="Splits: ₹2,140 owed to you across Riya, Meera, Kabir and Dev" loading="lazy">
+        </article>
+        <article class="step" data-i="5">
+          <p class="k">Warranty vault</p>
+          <h3>Never lose a warranty again.</h3>
+          <p>Purchase date, expiry countdown and claim steps for everything you own — <b>flagged before it lapses</b>, not after.</p>
+          <img class="step-shot" src="/assets/img/ez-warranties@1x.webp" srcset="/assets/img/ez-warranties@1x.webp 300w, /assets/img/ez-warranties.webp 600w" sizes="(max-width:900px) 320px, 0px" width="600" height="1432" alt="Warranties: MacBook Air active, Sony headphones expiring soon, LG washer active" loading="lazy">
+        </article>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= BUSINESS MODEL ================= -->
-  <section class="section" id="model">
-    <div class="wrap">
-      <div class="rv">
-        <p class="label">Business model</p>
-        <h2 class="h2">Merchants pay.<br>Their customers join for free.</h2>
-        <p class="lede">Every merchant on EZZ BILL brings its own customers with it. A busy café hands out 150+ bills a day — each one a new user we never paid to acquire.</p>
-      </div>
-      <div class="model__grid">
-        <svg class="flywheel rv" viewBox="0 0 520 520" role="img" aria-labelledby="fwTitle fwDesc">
-          <title id="fwTitle">The EZZ BILL flywheel</title>
-          <desc id="fwDesc">Merchants subscribe, airdrop bills at checkout, their customers join free, users build a bill history, and that history makes the merchant product more valuable, which brings more merchants.</desc>
-          <defs>
-            <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3FAF7D"/></marker>
-          </defs>
-          <circle cx="260" cy="260" r="178" fill="none" stroke="#22312A" stroke-width="1.5"/>
-          <path d="M 330 96 A 178 178 0 0 1 432 210" fill="none" stroke="#3FAF7D" stroke-width="2" marker-end="url(#ah)"/>
-          <path d="M 430 318 A 178 178 0 0 1 330 424" fill="none" stroke="#3FAF7D" stroke-width="2" marker-end="url(#ah)"/>
-          <path d="M 190 424 A 178 178 0 0 1 90 318" fill="none" stroke="#3FAF7D" stroke-width="2" marker-end="url(#ah)"/>
-          <path d="M 88 210 A 178 178 0 0 1 190 96" fill="none" stroke="#3FAF7D" stroke-width="2" marker-end="url(#ah)"/>
-          <g font-size="15" fill="#ECEFEA" text-anchor="middle">
-            <rect x="182" y="58" width="156" height="58" rx="14" fill="#0F1813" stroke="#22312A"/>
-            <text x="260" y="83" font-weight="650">Merchant subscribes</text><text x="260" y="103" font-size="12.5" fill="#A4AEA8">SaaS per location</text>
-            <rect x="382" y="231" width="128" height="58" rx="14" fill="#0F1813" stroke="#22312A"/>
-            <text x="446" y="256" font-weight="650">Bills airdropped</text><text x="446" y="276" font-size="12.5" fill="#A4AEA8">at every checkout</text>
-            <rect x="174" y="404" width="172" height="58" rx="14" fill="#0F1813" stroke="#3FAF7D"/>
-            <text x="260" y="429" font-weight="650">Customers join free</text><text x="260" y="449" font-size="12.5" fill="#A4AEA8">₹0 acquisition cost</text>
-            <rect x="10" y="231" width="128" height="58" rx="14" fill="#0F1813" stroke="#22312A"/>
-            <text x="74" y="256" font-weight="650">Bill history</text><text x="74" y="276" font-size="12.5" fill="#A4AEA8">grows per user</text>
-          </g>
-          <text class="fw-title" x="260" y="248" text-anchor="middle" font-size="30" fill="#ECEFEA">EZZ BILL</text>
-          <text x="260" y="276" text-anchor="middle" font-size="13" fill="#A4AEA8">more merchants → more users</text>
-        </svg>
-        <ol class="loop rv" aria-label="The EZZ BILL flywheel">
-          <li><strong>Merchant subscribes</strong><span>SaaS, per location</span></li>
-          <li><strong>Bills airdropped</strong><span>at every checkout, by NFC tag</span></li>
-          <li><strong>Customers join free</strong><span>₹0 acquisition cost</span></li>
-          <li><strong>Bill history grows</strong><span>making every merchant's data more valuable</span></li>
-        </ol>
-        <div class="rev">
-          <div class="rev__card rev__card--hl rv">
-            <h3>Merchant SaaS</h3><span class="price">₹499–999 / location / mo</span>
-            <p>Digital bills, NFC airdrop at every table or counter, and purchase analytics on who comes back.</p>
-          </div>
-          <div class="rev__card rv">
-            <h3>Consumer Premium</h3><span class="price">₹49–99 / mo</span>
-            <p>Free to collect every bill. Premium unlocks deeper Money Leaks insight, warranty and return alerts.</p>
-          </div>
-          <div class="rev__card rv">
-            <h3>Who we serve first</h3><span class="price">22–35 · UPI-native</span>
-            <p>Urban Indian professionals — starting with the sharpest pain we know: expense reimbursement.</p>
-          </div>
-        </div>
+<!-- ================= C. HOW IT WORKS: NFC Airdrop, end to end ================= -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="grid12 sec-head">
+      <p class="eyebrow"><span class="dot"></span>How it works · for restaurants</p>
+      <div class="t">
+        <h2 class="h2" data-reveal>Tap the table. <span class="g">The bill is yours.</span></h2>
+        <p class="lede muted" data-reveal>No app to download, no QR to scan, no email to type. One tag per table hands each guest their own bill — then hands the next guest theirs.</p>
       </div>
     </div>
-  </section>
+    <div class="nfc-flow" data-reveal>
+      <div class="nfc-flow-head">
+        <span class="mono">NFC Airdrop, end to end</span>
+        <p>Live today. This is the flow restaurants will run.</p>
+      </div>
+      <ol>
+        <li><a class="phone" href="https://ezbill.live/staff" target="_blank" rel="noopener" aria-label="Open the staff console on ezbill.live"><span class="screen"><img src="/assets/img/ezz-staff@1x.webp" srcset="/assets/img/ezz-staff@1x.webp 300w, /assets/img/ezz-staff.webp 600w" sizes="230px" width="600" height="1298" alt="Staff console: Table 3 and Counter ready to tap, Table 12 and Table 7 open" loading="lazy"></span></a><b>Staff arm the table</b><span>Enter the total, snap the bill.</span></li>
+        <li><a class="phone" href="https://ezbill.live/t/t3" target="_blank" rel="noopener" aria-label="Open the guest tap page on ezbill.live"><span class="screen"><img src="/assets/img/ezz-tap-guest@1x.webp" srcset="/assets/img/ezz-tap-guest@1x.webp 300w, /assets/img/ezz-tap-guest.webp 600w" sizes="230px" width="600" height="1298" alt="Guest taps the tag and the Blue Tokai Coffee bill opens" loading="lazy"></span><span class="rings" aria-hidden="true"><i></i><i></i><i></i></span></a><b>Guest taps the tag</b><span>The bill opens on any phone.</span></li>
+        <li><a class="phone" href="https://ezbill.live" target="_blank" rel="noopener" aria-label="Open EZZ BILL on ezbill.live"><span class="screen"><img src="/assets/img/ezz-bill-detail@1x.webp" srcset="/assets/img/ezz-bill-detail@1x.webp 300w, /assets/img/ezz-bill-detail.webp 600w" sizes="230px" width="600" height="1298" alt="Saved bill: Blue Tokai Coffee, Food and Dining, UPI, with Cappuccino and Almond Croissant itemised" loading="lazy"></span></a><b>Saved and itemised</b><span>Categorised, searchable, splittable.</span></li>
+      </ol>
+    </div>
+    <div class="row flow-links">
+      <a class="btn primary magnetic" href="#access" data-as="merchant">Bring NFC Airdrop to your café <svg class="ic rt" aria-hidden="true"><use href="#rt"/></svg></a>
+      <a class="tlink" href="https://youtu.be/RGl08gM4TGk" target="_blank" rel="noopener">Watch the real-world demo <svg class="ic ext" aria-hidden="true"><use href="#ext"/></svg></a>
+    </div>
+  </div>
+</section>
 
-  <!-- ================= BUILT ================= -->
-  <section class="section" id="built">
-    <div class="wrap">
-      <div class="rv">
-        <p class="label">Traction</p>
-        <h2 class="h2">Not a mock-up.<br>A working product.</h2>
-        <p class="lede">Every screen on this page is the real app. These modules are built and running today.</p>
-      </div>
-      <div class="built rv">
-        <div class="mod"><div class="mod__top"><h3>NFC Airdrop</h3><span class="pill">Live</span></div><p>Tap-to-bill at the table, plus a live staff console for every table.</p></div>
-        <div class="mod"><div class="mod__top"><h3>Gmail bill sync</h3><span class="pill">Live</span></div><p>Pulls bills and invoices straight from your inbox.</p></div>
-        <div class="mod"><div class="mod__top"><h3>AI bill reading</h3><span class="pill">Live</span></div><p>Camera, PDF and bulk upload — merchant, total and line items extracted.</p></div>
-        <div class="mod"><div class="mod__top"><h3>Money Leaks</h3><span class="pill">Live</span></div><p>Personal ideal budget and a Leak Score out of 100.</p></div>
-        <div class="mod"><div class="mod__top"><h3>Subscriptions</h3><span class="pill">Live</span></div><p>Recurring payments detected and tracked automatically.</p></div>
-        <div class="mod"><div class="mod__top"><h3>Warranty vault</h3><span class="pill">Live</span></div><p>Expiry countdowns and claim guides for every product.</p></div>
-        <div class="mod"><div class="mod__top"><h3>Split bills</h3><span class="pill">Live</span></div><p>Split with friends, with the actual bill attached.</p></div>
-        <div class="mod"><div class="mod__top"><h3>Smart Support</h3><span class="pill">Live</span></div><p>Merchant contact, returns and help — from the bill itself.</p></div>
-        <div class="mod"><div class="mod__top"><h3>Ask AI</h3><span class="pill">Live</span></div><p>Ask anything about your spending, in plain language.</p></div>
-      </div>
-      <div class="built__cta rv">
-        <span>Want to try it yourself?</span>
-        <a class="btn btn--ghost" href="https://ezbill.live" target="_blank" rel="noopener">Open the live app
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+<!-- ================= BUSINESS MODEL ================= -->
+<section class="sec" id="model">
+  <div class="wrap">
+    <div class="grid12 sec-head">
+      <p class="eyebrow"><span class="dot"></span>Business model</p>
+      <div class="t">
+        <h2 class="h2" data-reveal>Merchants pay. <span class="g">Their customers join for free.</span></h2>
+        <p class="lede muted" data-reveal>Every merchant on EZZ BILL brings its own customers with it. A busy café hands out 150+ bills a day — each one a new user we never paid to acquire.</p>
       </div>
     </div>
-  </section>
-
-  <!-- ================= TEAM ================= -->
-  <section class="section" id="team">
-    <div class="wrap team__grid">
-      <div class="rv">
-        <p class="label">Team</p>
-        <h2 class="h2">Founder-led.<br>Product-first.</h2>
-      </div>
-      <div class="founder rv">
-        <div class="founder__mono" aria-hidden="true">OP</div>
-        <div>
-          <h3>Omkar Patil</h3>
-          <p class="role">Founder</p>
-          <p>Three years as a Product Manager at Bajaj Finserv Health. Now building EZZ BILL full-time.</p>
-          <a href="#" data-todo="linkedin">LinkedIn profile</a>
-        </div>
+    <div class="grid12 model-grid">
+      <svg class="flywheel" viewBox="0 0 520 520" role="img" aria-labelledby="fwT fwD" data-reveal>
+        <title id="fwT">The EZZ BILL flywheel</title>
+        <desc id="fwD">Merchants subscribe, bills are airdropped at every checkout, customers join free, and each user's bill history grows — which brings more merchants.</desc>
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#47C48A"/></marker></defs>
+        <circle cx="260" cy="260" r="178" fill="none" stroke="#26332C" stroke-width="1.5"/>
+        <g fill="none" stroke="#47C48A" stroke-width="2" marker-end="url(#ah)">
+          <path d="M 330 96 A 178 178 0 0 1 432 210"/><path d="M 430 318 A 178 178 0 0 1 330 424"/><path d="M 190 424 A 178 178 0 0 1 90 318"/><path d="M 88 210 A 178 178 0 0 1 190 96"/>
+        </g>
+        <g font-size="15" fill="#E9EFEA" text-anchor="middle">
+          <rect x="182" y="58" width="156" height="58" rx="12" fill="#17211C" stroke="#26332C"/><text x="260" y="83" font-weight="650">Merchant subscribes</text><text x="260" y="103" font-size="12.5" fill="#93A199">SaaS per location</text>
+          <rect x="382" y="231" width="128" height="58" rx="12" fill="#17211C" stroke="#26332C"/><text x="446" y="256" font-weight="650">Bills airdropped</text><text x="446" y="276" font-size="12.5" fill="#93A199">at every checkout</text>
+          <rect x="174" y="404" width="172" height="58" rx="12" fill="#17211C" stroke="#47C48A"/><text x="260" y="429" font-weight="650">Customers join free</text><text x="260" y="449" font-size="12.5" fill="#93A199">₹0 acquisition cost</text>
+          <rect x="10" y="231" width="128" height="58" rx="12" fill="#17211C" stroke="#26332C"/><text x="74" y="256" font-weight="650">Bill history</text><text x="74" y="276" font-size="12.5" fill="#93A199">grows per user</text>
+        </g>
+        <text class="t" x="260" y="252" text-anchor="middle" font-size="34" fill="#E9EFEA">EZZ BILL</text>
+        <text x="260" y="280" text-anchor="middle" font-size="13" fill="#93A199">more merchants → more users</text>
+      </svg>
+      <ol class="loop" aria-label="The EZZ BILL flywheel">
+        <li><b>Merchant subscribes</b><span>SaaS, per location</span></li>
+        <li><b>Bills airdropped</b><span>at every checkout, by NFC tag</span></li>
+        <li><b>Customers join free</b><span>₹0 acquisition cost</span></li>
+        <li><b>Bill history grows</b><span>making every merchant's data more valuable — and the loop starts again</span></li>
+      </ol>
+      <div class="rev" data-reveal>
+        <div class="rev-row"><h3>Merchant SaaS</h3><span class="price">₹499–999 / location / mo</span><p>Digital bills, NFC airdrop at every table or counter, and purchase analytics on who comes back.</p></div>
+        <div class="rev-row"><h3>Consumer Premium</h3><span class="price">₹49–99 / mo</span><p>Free to collect every bill. Premium unlocks deeper Money Leaks insight, warranty and return alerts.</p></div>
+        <div class="rev-row"><h3>Who we serve first</h3><span class="price">22–35 · UPI-native</span><p>Urban Indian professionals — starting with the sharpest pain we know: expense reimbursement.</p></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= CTA ================= -->
-  <section class="section" id="access">
-    <div class="wrap">
-      <div class="rv">
-        <p class="label">Get involved</p>
-        <h2 class="h2">Never misplace a bill again.</h2>
+<!-- ================= D + E. TRACTION: proof row + facts ================= -->
+<section class="sec" id="built">
+  <div class="wrap">
+    <div class="grid12 sec-head">
+      <p class="eyebrow"><span class="dot"></span>Traction</p>
+      <div class="t">
+        <h2 class="h2" data-reveal>Not a mock-up. <span class="g">A working product.</span></h2>
+        <p class="lede muted" data-reveal>Every screen on this page is the real app. These modules are built and running today.</p>
       </div>
-      <div class="cta__grid">
-        <div class="cta-card rv">
-          <h3>Get early access</h3>
-          <p>Free during early access. The first 100 people get onboarded personally and help shape what we build next.</p>
-          <form data-form="waitlist" novalidate>
-            <div class="field">
-              <input type="email" name="email" placeholder="you@email.com" aria-label="Your email" autocomplete="email" required>
-              <input type="hidden" name="type" value="waitlist">
-              <button class="btn btn--primary" type="submit">Join the waitlist</button>
-            </div>
-          </form>
-          <small>No spam. One email, when we launch.</small>
+    </div>
+    <div class="grid12 proof">
+      <div class="browser" data-reveal>
+        <div class="bar"><i></i><i></i><i></i><span class="url" id="deskUrl">ezbill.live/staff</span>
+          <div class="tabs" role="group" aria-label="Switch screen">
+            <button type="button" aria-pressed="true" data-v="0" data-url="ezbill.live/staff">Staff console</button>
+            <button type="button" aria-pressed="false" data-v="1" data-url="ezbill.live">Dashboard</button>
+            <button type="button" aria-pressed="false" data-v="2" data-url="ezbill.live/money-leaks">Money Leaks</button>
+            <button type="button" aria-pressed="false" data-v="3" data-url="ezbill.live/analytics">Insights</button>
+          </div>
         </div>
-        <div class="cta-card cta-card--paper rv" id="investors">
+        <a class="view" id="deskView" href="https://ezbill.live/staff" target="_blank" rel="noopener" aria-label="Open this screen on ezbill.live">
+          <img class="on" src="/assets/img/ez-desk-staff@1x.webp" srcset="/assets/img/ez-desk-staff@1x.webp 800w, /assets/img/ez-desk-staff.webp 1600w" sizes="(max-width:900px) 100vw, 860px" width="1600" height="1000" alt="Staff console on the web: Table 3 and Counter ready to tap, Table 12 and Table 7 open" loading="lazy">
+          <img src="/assets/img/ez-desk-home@1x.webp" srcset="/assets/img/ez-desk-home@1x.webp 800w, /assets/img/ez-desk-home.webp 1600w" sizes="(max-width:900px) 100vw, 860px" width="1600" height="1000" alt="Web dashboard: ₹24,986 spent in the last 30 days with recent bills" loading="lazy">
+          <img src="/assets/img/ez-desk-money-leaks@1x.webp" srcset="/assets/img/ez-desk-money-leaks@1x.webp 800w, /assets/img/ez-desk-money-leaks.webp 1600w" sizes="(max-width:900px) 100vw, 860px" width="1600" height="1000" alt="Money Leaks on the web: ₹2,311 leaked this month, Leak Score 49 out of 100" loading="lazy">
+          <img src="/assets/img/ez-desk-analytics@1x.webp" srcset="/assets/img/ez-desk-analytics@1x.webp 800w, /assets/img/ez-desk-analytics.webp 1600w" sizes="(max-width:900px) 100vw, 860px" width="1600" height="1000" alt="Spending insights on the web: weekly rhythm and time-of-day spending" loading="lazy">
+          <span class="btn primary open">Open on ezbill.live <svg class="ic ext" aria-hidden="true"><use href="#ext"/></svg></span>
+        </a>
+      </div>
+      <div class="video-col" data-reveal>
+        <div class="phone"><span class="screen">
+          <video id="walk" autoplay muted loop playsinline preload="metadata" poster="/assets/video/ez-walkthrough-poster.webp" width="390" height="844" aria-label="40-second screen recording of EZZ BILL: home, Money Leaks, subscriptions, splits and all bills">
+            <source src="/assets/video/ez-walkthrough.webm" type="video/webm">
+            <source src="/assets/video/ez-walkthrough.mp4" type="video/mp4">
+          </video></span></div>
+        <p class="cap">40-second walkthrough · live app, demo account</p>
+      </div>
+      <div class="mods" data-reveal>
+        <div class="mod"><div><h3>NFC Airdrop</h3><span class="tag-live">Live</span></div><p>Tap-to-bill at the table, plus a live staff console for every table.</p></div>
+        <div class="mod"><div><h3>Gmail bill sync</h3><span class="tag-live">Live</span></div><p>Pulls bills and invoices straight from your inbox.</p></div>
+        <div class="mod"><div><h3>AI bill reading</h3><span class="tag-live">Live</span></div><p>Camera, PDF and bulk upload — merchant, total and line items extracted.</p></div>
+        <div class="mod"><div><h3>Money Leaks</h3><span class="tag-live">Live</span></div><p>Personal ideal budget and a Leak Score out of 100.</p></div>
+        <div class="mod"><div><h3>Subscriptions</h3><span class="tag-live">Live</span></div><p>Recurring payments detected and tracked automatically.</p></div>
+        <div class="mod"><div><h3>Warranty vault</h3><span class="tag-live">Live</span></div><p>Expiry countdowns and claim guides for every product.</p></div>
+        <div class="mod"><div><h3>Split bills</h3><span class="tag-live">Live</span></div><p>Split with friends, with the actual bill attached.</p></div>
+        <div class="mod"><div><h3>Smart Support</h3><span class="tag-live">Live</span></div><p>Merchant contact, returns and help — from the bill itself.</p></div>
+        <div class="mod"><div><h3>Ask AI</h3><span class="tag-live">Live</span></div><p>Ask anything about your spending, in plain language.</p></div>
+      </div>
+      <div class="facts" data-reveal>
+        <div class="fact"><span class="mono">Business model</span><p><b>Merchant SaaS</b> at ₹499–999 per location a month for digital bills and NFC Airdrop. <b>Consumer premium</b> at ₹49–99 a month; collecting bills stays free.</p></div>
+        <div class="fact"><span class="mono">The pivot</span><p>Started as <b>ExpenseDesk</b>, a B2B reimbursement tool. Capture turned out to be the real pain, so we rebuilt for consumers.</p></div>
+        <div class="fact"><span class="mono">Shipped</span><p><b>677+ commits.</b> NFC Airdrop, Gmail sync, AI bill reading, Money Leaks, warranties, subscriptions and splits are live.</p></div>
+        <div class="fact"><span class="mono">Next</span><p>Play Store launch with the UPI SMS reader, Account Aggregator bank sync, and a <b>restaurant partner rollout</b>.</p></div>
+      </div>
+      <div class="row proof-cta">
+        <a class="btn primary magnetic" href="https://ezbill.live" target="_blank" rel="noopener">Try the live app <svg class="ic ext" aria-hidden="true"><use href="#ext"/></svg></a>
+        <a class="btn" href="https://github.com/omkarpatilswork/ez-bill1" target="_blank" rel="noopener">Build notes on GitHub <svg class="ic ext" aria-hidden="true"><use href="#ext"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section class="sec" id="team">
+  <div class="wrap grid12 team-grid">
+    <p class="eyebrow" style="grid-column:1 / span 3;padding-top:.7em"><span class="dot"></span>Team</p>
+    <div class="founder" data-reveal>
+      <div>
+        <h3>Omkar<br>Patil</h3>
+        <span class="mono">Founder</span>
+      </div>
+      <div>
+        <p>Three years as a Product Manager at Bajaj Finserv Health. Now building EZZ BILL full-time.</p>
+        <p class="edu">B.Tech in Information Technology, Manipal Institute of Technology · ISB executive Product Management Certification</p>
+        <div class="row" style="margin-top:20px"><a class="tlink" href="https://www.omkarpatil.in/#ezzbill" target="_blank" rel="noopener">Portfolio <svg class="ic ext" aria-hidden="true"><use href="#ext"/></svg></a><a class="tlink" href="https://github.com/omkarpatilswork" target="_blank" rel="noopener">GitHub <svg class="ic ext" aria-hidden="true"><use href="#ext"/></svg></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GET EARLY ACCESS + F. FOR INVESTORS ================= -->
+<section class="sec" id="access">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span>Get involved</p>
+    <h2 class="title" style="margin-top:22px" data-reveal>Never misplace<br>a bill <span class="g">again.</span></h2>
+    <div class="grid12 access-grid">
+      <div class="join" data-reveal>
+        <h3>Get early access</h3>
+        <p>Free during early access. The first 100 people get onboarded personally and help shape what we build next.</p>
+        <form class="waitlist" data-form="waitlist" id="joinForm" novalidate>
+          <div class="as" role="radiogroup" aria-label="I'm signing up as">
+            <label><input type="radio" name="type" value="waitlist" checked><span>For me</span></label>
+            <label><input type="radio" name="type" value="merchant"><span>For my café or restaurant</span></label>
+          </div>
+          <input class="field" type="email" name="email" placeholder="you@email.com" aria-label="Your email" autocomplete="email" required>
+          <button class="btn primary magnetic" type="submit">Join the waitlist <svg class="ic rt" aria-hidden="true"><use href="#rt"/></svg></button>
+        </form>
+        <p class="small">No spam. One email, when we launch.</p>
+      </div>
+
+      <article class="inv" id="investors" data-reveal>
+        <a class="inv-media" href="#product" aria-label="See how EZZ BILL works">
+          <span class="phone a" aria-hidden="true"><span class="screen"><img src="/assets/img/ezz-tap-guest@1x.webp" alt="" width="300" height="649" loading="lazy"></span></span>
+          <span class="phone b" aria-hidden="true"><span class="screen"><img src="/assets/img/ezz-bill-detail@1x.webp" alt="" width="300" height="649" loading="lazy"></span></span>
+          <span class="ring" aria-hidden="true"><i></i><i></i></span>
+        </a>
+        <div class="inv-body">
+          <div class="inv-meta"><span class="mono"><span class="dot gold"></span>Raising pre-seed</span><span class="mono">Deck + live walkthrough</span></div>
           <h3>Investors &amp; incubators</h3>
           <p>We're raising our pre-seed round. Request the deck and a live walkthrough of the product.</p>
           <form data-form="investor" novalidate>
-            <div class="field"><input type="text" name="name" placeholder="Name and fund" aria-label="Your name and fund" autocomplete="organization"></div>
-            <div class="field">
-              <input type="email" name="email" placeholder="you@fund.com" aria-label="Your work email" autocomplete="email" required>
+            <input class="field" type="text" name="name" placeholder="Name and fund" aria-label="Your name and fund" autocomplete="organization">
+            <div class="waitlist" style="max-width:none">
+              <input class="field" type="email" name="email" placeholder="you@fund.com" aria-label="Your work email" autocomplete="email" required>
               <input type="hidden" name="type" value="investor">
-              <button class="btn btn--dark" type="submit">Request the deck</button>
+              <button class="btn primary magnetic" type="submit">Request the deck <svg class="ic rt" aria-hidden="true"><use href="#rt"/></svg></button>
             </div>
           </form>
-          <small>Goes straight to the founder's inbox.</small>
+          <p class="small">Goes straight to the founder's inbox.</p>
+          <div class="inv-foot">
+            <a class="tlink" href="#product">See how it works <svg class="ic rt" aria-hidden="true"><use href="#rt"/></svg></a>
+            <span class="pills"><a href="https://ezbill.live" target="_blank" rel="noopener">Live app <svg class="ic ext" aria-hidden="true"><use href="#ext"/></svg></a><a href="https://github.com/omkarpatilswork/ez-bill1" target="_blank" rel="noopener">GitHub <svg class="ic ext" aria-hidden="true"><use href="#ext"/></svg></a></span>
+          </div>
         </div>
-      </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 </main>
 
 <footer>
   <div class="wrap">
     <div class="foot">
       <span>© 2026 EZZ BILL</span>
-      <nav aria-label="Footer"><a href="#" data-todo="privacy">Privacy</a><a href="#" data-todo="linkedin">LinkedIn</a><a href="#investors">Contact</a></nav>
+      <nav aria-label="Footer"><a href="https://ezbill.live/privacy" target="_blank" rel="noopener">Privacy</a><a href="https://www.omkarpatil.in" target="_blank" rel="noopener">Founder</a><a href="#investors">Contact</a></nav>
     </div>
-    <p class="sources">Sources: UPI volumes — NPCI data via <a href="https://startuptalky.com/upi-transactions-september-2026/" target="_blank" rel="noopener">StartupTalky (Oct 2026)</a>. BPA/BPS in receipts — <a href="https://reports.greenamerica.org/skip-the-slip" target="_blank" rel="noopener">Green America, Skip the Slip (2022)</a>. App screens show demo data.</p>
+    <p class="src">Sources: UPI volumes — NPCI data via <a href="https://startuptalky.com/upi-transactions-september-2026/" target="_blank" rel="noopener">StartupTalky (Oct 2026)</a>. BPA/BPS in receipts — <a href="https://reports.greenamerica.org/skip-the-slip" target="_blank" rel="noopener">Green America, Skip the Slip (2022)</a>. App screens show demo data.</p>
   </div>
 </footer>
 
-<script>
-(function () {
-  document.body.classList.remove('no-js');
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/lenis.min.js" defer></script>
+<script defer>
+document.addEventListener('DOMContentLoaded', function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
   var FORMSPREE_ID = 'xbgjjjee';
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // nav: scrolled state + mobile menu
-  var nav = document.getElementById('nav'), toggle = document.getElementById('navToggle'), links = document.getElementById('navLinks');
-  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 8); }
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  function setMenu(open) { links.classList.toggle('open', open); toggle.setAttribute('aria-expanded', String(open)); toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); }
-  toggle.addEventListener('click', function () { setMenu(!links.classList.contains('open')); });
-  links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  /* ---------- smooth scroll: Lenis synced to the GSAP ticker (off with reduced motion) ---------- */
+  var lenis = null;
+  if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+  if (!reduce && window.Lenis && window.gsap) {
+    lenis = new Lenis({ lerp: 0.1 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href'); if (id.length < 2) return;
+      var el = document.querySelector(id); if (!el) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(el, { offset: -72 }); else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+      history.replaceState(null, '', id);
+    });
+  });
+
+  /* ---------- scroll progress under the nav (scrubbed) ---------- */
+  var bar = document.getElementById('progress');
+  if (window.gsap && window.ScrollTrigger && !reduce) {
+    gsap.to(bar, { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
+  }
+
+  /* ---------- mobile menu ---------- */
+  var burger = document.getElementById('burger'), menu = document.getElementById('navLinks');
+  function setMenu(o) { menu.classList.toggle('open', o); burger.setAttribute('aria-expanded', String(o)); burger.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); }
+  burger.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
-  document.addEventListener('click', function (e) { if (links.classList.contains('open') && !links.contains(e.target) && !toggle.contains(e.target)) setMenu(false); });
+  document.addEventListener('click', function (e) { if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) setMenu(false); });
 
-  // forms -> Formspree (waitlist + investor requests land in the same inbox, tagged by "type")
+  /* ---------- reveals (8% into the viewport) ---------- */
+  var rev = document.querySelectorAll('[data-reveal], [data-print-wrap]');
+  if ('IntersectionObserver' in window && !reduce) {
+    var rio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } }); }, { threshold: 0.08 });
+    rev.forEach(function (el) { rio.observe(el); });
+  } else rev.forEach(function (el) { el.classList.add('in'); });
+
+  /* ---------- tall screenshots auto-scroll inside the phone ---------- */
+  function setDist(img) {
+    var screen = img.closest('.layer') || img.closest('.screen'); if (!screen || !img.naturalWidth || !screen.clientWidth) return;
+    var h = screen.clientWidth * img.naturalHeight / img.naturalWidth;
+    var d = Math.max(0, h - screen.clientHeight);
+    img.style.setProperty('--dist', (-d) + 'px');
+    img.style.setProperty('--dur', Math.max(6, d / 120) + 's');
+  }
+  function allDist() { document.querySelectorAll('img.tall').forEach(function (img) { img.complete ? setDist(img) : img.addEventListener('load', function () { setDist(img); }, { once: true }); }); }
+  allDist(); addEventListener('resize', allDist);
+
+  /* ---------- B. scrollytelling: swap the sticky phone as each step crosses the centre ---------- */
+  var layers = document.querySelectorAll('#stagePhone .layer'), stageRings = document.getElementById('stageRings'), steps = document.querySelectorAll('.step'), cur = 0;
+  var stageLinks = ['https://ezbill.live/t/t3', 'https://ezbill.live', 'https://ezbill.live/money-leaks', 'https://ezbill.live/subscriptions', 'https://ezbill.live/splits', 'https://ezbill.live/warranties'];
+  var stagePhone = document.getElementById('stagePhone');
+  stagePhone.href = stageLinks[0];
+  function show(i) {
+    if (i === cur) return; cur = i;
+    layers.forEach(function (l) { l.classList.toggle('on', +l.dataset.i === i); });
+    steps.forEach(function (s) { s.classList.toggle('is-active', +s.dataset.i === i); });
+    stageRings.style.display = i === 0 ? '' : 'none';
+    stagePhone.href = stageLinks[i];
+    var img = layers[i].querySelector('img.tall');
+    if (img) { if (img.loading === 'lazy') img.loading = 'eager'; setDist(img); img.style.animation = 'none'; void img.offsetHeight; img.style.animation = ''; }
+  }
+  if ('IntersectionObserver' in window) {
+    var sio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) show(+e.target.dataset.i); }); }, { rootMargin: '-45% 0px -45% 0px' });
+    steps.forEach(function (s) { sio.observe(s); });
+    // warm the stage images once the product section is near
+    var warm = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { layers.forEach(function (l) { var im = l.querySelector('img'); if (im.loading === 'lazy') im.loading = 'eager'; }); warm.disconnect(); } }, { rootMargin: '600px 0px' });
+    warm.observe(document.getElementById('product'));
+  }
+
+  /* ---------- D. browser frame: tabs swap screen + URL, auto-advance 4.2s, click opens the page ---------- */
+  var tabs = document.querySelectorAll('.browser .tabs button'), views = document.querySelectorAll('#deskView img'), view = document.getElementById('deskView'), url = document.getElementById('deskUrl'), idx = 0, timer = null, userPicked = false;
+  function setTab(i) {
+    idx = i;
+    tabs.forEach(function (t) { var on = +t.dataset.v === i; t.setAttribute('aria-pressed', String(on)); if (on) { url.textContent = t.dataset.url; view.href = 'https://' + t.dataset.url; view.setAttribute('aria-label', 'Open ' + t.dataset.url); } });
+    views.forEach(function (v, k) { v.classList.toggle('on', k === i); });
+  }
+  function startAuto() { if (reduce || userPicked || timer) return; timer = setInterval(function () { setTab((idx + 1) % views.length); }, 4200); }
+  function stopAuto() { clearInterval(timer); timer = null; }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { userPicked = true; stopAuto(); setTab(+t.dataset.v); }); });
+  document.addEventListener('visibilitychange', function () { document.hidden ? stopAuto() : startAuto(); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { es[0].isIntersecting ? startAuto() : stopAuto(); }, { threshold: 0.3 }).observe(view);
+  }
+
+  /* ---------- walkthrough video: no autoplay with reduced motion ---------- */
+  var walk = document.getElementById('walk');
+  if (reduce) { walk.removeAttribute('autoplay'); walk.pause(); walk.controls = true; }
+  else if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { es[0].isIntersecting ? walk.play().catch(function () {}) : walk.pause(); }, { threshold: 0.2 }).observe(walk);
+  }
+
+  /* ---------- magnetic primary buttons (GSAP) ---------- */
+  if (finePointer && !reduce && window.gsap) {
+    document.querySelectorAll('.magnetic').forEach(function (b) {
+      var xTo = gsap.quickTo(b, 'x', { duration: 0.5, ease: 'power3' }), yTo = gsap.quickTo(b, 'y', { duration: 0.5, ease: 'power3' });
+      b.addEventListener('mousemove', function (e) { var r = b.getBoundingClientRect(); xTo((e.clientX - r.left - r.width / 2) * 0.18); yTo((e.clientY - r.top - r.height / 2) * 0.28 - 2); });
+      b.addEventListener('mouseleave', function () { xTo(0); yTo(0); });
+    });
+  }
+
+  /* ---------- merchant CTA preselects "for my café" ---------- */
+  document.querySelectorAll('[data-as="merchant"]').forEach(function (a) {
+    a.addEventListener('click', function () { var r = document.querySelector('#joinForm input[value="merchant"]'); if (r) r.checked = true; });
+  });
+
+  /* ---------- forms -> Formspree (tagged by "type": waitlist / merchant / investor) ---------- */
   document.querySelectorAll('form[data-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = form.querySelector('input[type=email]'), btn = form.querySelector('button[type=submit]');
-      var old = form.querySelector('.form-note'); if (old) old.remove();
-      var note = document.createElement('p'); note.className = 'form-note';
+      var old = form.querySelector('.note'); if (old) old.remove();
+      var note = document.createElement('p'); note.className = 'note'; note.setAttribute('role', 'status');
       if (!email.value.trim() || !email.checkValidity()) { note.classList.add('err'); note.textContent = 'Enter a valid email address.'; form.appendChild(note); email.focus(); return; }
-      var label = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…';
+      btn.disabled = true; var label = btn.innerHTML; btn.textContent = 'Sending…';
       fetch('https://formspree.io/f/' + FORMSPREE_ID, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
         .then(function (r) {
           if (!r.ok) throw new Error();
-          var investor = form.getAttribute('data-form') === 'investor';
-          form.innerHTML = '<p class="form-note ok">' + (investor ? 'Thanks — the deck is on its way to ' : 'You’re on the list. We’ll email ') + '<b></b>' + (investor ? '.' : ' when we launch.') + '</p>';
-          form.querySelector('b').textContent = email.value.trim();
+          var kind = form.getAttribute('data-form');
+          var done = document.createElement('p'); done.className = 'note ok'; done.setAttribute('role', 'status');
+          done.textContent = kind === 'investor' ? 'Thanks — the deck is on its way to ' + email.value.trim() + '.' : 'You’re on the list. We’ll email ' + email.value.trim() + ' when we launch.';
+          form.replaceChildren(done);
         })
-        .catch(function () { btn.disabled = false; btn.textContent = label; note.classList.add('err'); note.textContent = 'Couldn’t send — check your connection and try again.'; form.appendChild(note); });
+        .catch(function () { btn.disabled = false; btn.innerHTML = label; note.classList.add('err'); note.textContent = 'Couldn’t send — check your connection and try again.'; form.appendChild(note); });
     });
   });
-
-  // product tabs: auto-advance until the visitor takes over
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab')), img = document.getElementById('productImg'), stage = document.getElementById('productStage');
-  var idx = 0, timer = null, DUR = 6000, auto = !reduce;
-  tabs.forEach(function (t) { t.style.setProperty('--dur', DUR + 'ms'); if (!auto) t.classList.add('static'); });
-  function select(i, focus) {
-    idx = (i + tabs.length) % tabs.length;
-    tabs.forEach(function (t, j) { var on = j === idx; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
-    var t = tabs[idx]; stage.setAttribute('aria-labelledby', t.id);
-    if (focus) t.focus();
-    var next = t.getAttribute('data-screen');
-    if (img.getAttribute('src') !== next) {
-      img.classList.add('out');
-      setTimeout(function () { img.src = next; img.alt = t.getAttribute('data-alt'); img.onload = function () { img.classList.remove('out'); }; }, reduce ? 0 : 220);
-    }
-    if (auto) { clearTimeout(timer); timer = setTimeout(function () { select(idx + 1); }, DUR); }
-  }
-  function stopAuto() { auto = false; clearTimeout(timer); tabs.forEach(function (t) { t.classList.add('paused'); }); }
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { stopAuto(); select(i); });
-    t.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); stopAuto(); select(idx + 1, true); }
-      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); stopAuto(); select(idx - 1, true); }
-    });
-  });
-  // preload the other screens so switching is instant
-  tabs.forEach(function (t) { var p = new Image(); p.src = t.getAttribute('data-screen'); });
-  // only start cycling once the section is on screen
-  if ('IntersectionObserver' in window && auto) {
-    new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { select(0); o.disconnect(); } }, { threshold: .35 }).observe(stage);
-  }
-
-  // walkthrough video: play silently while on screen, pause when not
-  var walk = document.getElementById('walkthrough');
-  if (walk && 'IntersectionObserver' in window && !reduce) {
-    new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { walk.preload = 'auto'; walk.play().catch(function () {}); } else { walk.pause(); } }); }, { threshold: .4 }).observe(walk);
-  } else if (walk) { walk.controls = true; walk.preload = 'metadata'; }
-
-  // demo video: load YouTube only on click
-  var VIDEO_ID = 'RGl08gM4TGk';
-  document.querySelector('.video__play').addEventListener('click', function () {
-    var box = document.getElementById('demoVideo'), f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID + '?autoplay=1&rel=0&modestbranding=1';
-    f.title = 'EZZ BILL product demo';
-    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    f.allowFullscreen = true; box.innerHTML = ''; box.appendChild(f);
-  });
-
-  // reveal on scroll
-  var els = document.querySelectorAll('.rv');
-  if ('IntersectionObserver' in window && !reduce) {
-    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
-    els.forEach(function (el) { io.observe(el); });
-  } else { els.forEach(function (el) { el.classList.add('in'); }); }
-})();
+});
 </script>
 </body>
 </html>
