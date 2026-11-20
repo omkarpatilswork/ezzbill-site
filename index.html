@@ -221,6 +221,12 @@
   .receipt__total b { font-family: var(--serif); font-weight: 400; font-size: 30px; letter-spacing: 0; color: #A1342D; }
   .receipt__foot { text-align: center; font-size: 11.5px; color: var(--paper-dim); margin-top: 16px; }
   @media (max-width: 860px) { .problem__grid { grid-template-columns: minmax(0, 1fr); } .receipt { transform: none; } }
+  .receipt__total--ok b { color: #1F6B4A; }
+  .trust__phone { margin-top: clamp(36px, 5vw, 56px); max-width: 260px; }
+  .trust__phone .phone { border-radius: 40px; }
+  .trust__phone .phone__screen { border-radius: 32px; }
+  .trust__phone .cap { margin-top: 14px; text-align: center; font: 400 12px var(--mono); color: var(--faint); letter-spacing: .04em; }
+  @media (max-width: 860px) { .trust__phone { margin-left: auto; margin-right: auto; } }
 
   /* ---------- product tabs ---------- */
   .product__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: clamp(40px, 6vw, 96px); align-items: center; margin-top: clamp(48px, 6vw, 72px); }
@@ -453,7 +459,7 @@
       <div class="rv">
         <p class="label">The digital layer for bills · India</p>
         <h1>UPI solved payments. We solve <em>what happens after.</em></h1>
-        <p class="hero__sub">Pay anywhere and the bill lands in your phone — itemised, searchable, and working for you: spend insights, warranty alerts, returns and reimbursements, in one place.</p>
+        <p class="hero__sub">Tap the table, scan the slip or upload the PDF. Every bill lands in one place — itemised, searchable, and with its sums checked.</p>
         <form class="waitlist" data-form="waitlist" novalidate>
           <input type="email" name="email" placeholder="you@email.com" aria-label="Your email" autocomplete="email" required>
           <input type="hidden" name="type" value="waitlist">
@@ -481,7 +487,7 @@
           <div class="phone__island"></div>
           <div class="phone__screen">
             <div class="phone__status"><span>13:20</span><i><svg width="16" height="10" viewBox="0 0 16 10" fill="#cfd6d2" aria-hidden="true"><rect x="0" y="6" width="3" height="4" rx="1"/><rect x="4.3" y="4" width="3" height="6" rx="1"/><rect x="8.6" y="2" width="3" height="8" rx="1"/><rect x="12.9" y="0" width="3" height="10" rx="1"/></svg><b></b></i></div>
-            <img src="/assets/screens/dashboard.webp" width="780" height="1688" alt="EZZ BILL home screen: ₹25,916 spent in the last 30 days, down 32%, with recent bills from Blue Tokai Coffee and Swiggy">
+            <img src="/assets/screens/home.webp" width="780" height="1688" alt="EZZ BILL Home: ₹25,916 spent in the last 30 days, down 32%, split by category, with the latest bill from Blue Tokai Coffee shown as a paper slip">
           </div>
           <div class="toast" aria-hidden="true">
             <div class="toast__icon"><svg viewBox="0 0 22 26"><path d="M2 1.5h18v21l-3-2-3 2-3-2-3 2-3-2-3 2z" fill="#04130B"/><path d="M6 7h10M6 11h10M6 15h6" stroke="#3FAF7D" stroke-width="1.8" stroke-linecap="round"/></svg></div>
@@ -534,29 +540,30 @@
     <div class="wrap">
       <div class="rv">
         <p class="label">The product</p>
-        <h2 class="h2">One home for every bill.<br>Then the bill starts working.</h2>
+        <h2 class="h2">Four places.<br>One button.</h2>
+        <p class="lede">Home, Bills, Insights and Vault — and one button that adds a bill from anywhere. The same map on a phone and on a laptop.</p>
       </div>
       <div class="product__grid">
         <div class="tabs rv" role="tablist" aria-label="Product features">
-          <button class="tab" role="tab" id="tab-collect" aria-controls="productStage" aria-selected="true" data-screen="/assets/screens/tall-all-bills.webp" data-nav="/assets/screens/nav-all-bills.webp" data-alt="All Bills screen: ₹63,962 across 59 bills, filterable by NFC bills and category, with Blue Tokai Coffee at the top">
-            <span class="tab__k">Collect</span><span class="tab__t">Every bill, from everywhere</span>
-            <span class="tab__d">Gmail receipts, camera snaps, PDFs and NFC table taps land in one feed — read by AI, itemised and categorised automatically.</span>
+          <button class="tab" role="tab" id="tab-home" aria-controls="productStage" aria-selected="true" data-screen="/assets/screens/tall-home.webp" data-nav="/assets/screens/nav-home.webp" data-alt="Home: ₹25,916 in the last 30 days by category, the latest bill on paper, and what needs you this week: Netflix renews in 3 days, a Croma return window, a warranty ending">
+            <span class="tab__k">Home</span><span class="tab__t">Where the money went, at a glance</span>
+            <span class="tab__d">The last 30 days by category, the latest bill on paper, and what needs you this week: a renewal, a return window, a warranty.</span>
           </button>
-          <button class="tab" role="tab" id="tab-leaks" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/tall-money-leaks.webp" data-nav="/assets/screens/nav-money-leaks.webp" data-alt="Money Leaks screen: ₹2,311 leaked this month, Leak Score 49 out of 100, category budgets and an AI advisor">
-            <span class="tab__k">Money Leaks</span><span class="tab__t">A score for where money quietly leaks</span>
-            <span class="tab__d">Your spending against an ideal budget built for your income, city and lifestyle — plus the one fix that saves you the most.</span>
+          <button class="tab" role="tab" id="tab-bills" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/tall-bills.webp" data-nav="/assets/screens/nav-bills.webp" data-alt="Bills: a search over shops, items and amounts, and every bill under its month with the month's total">
+            <span class="tab__k">Bills</span><span class="tab__t">Every bill, searchable to the line</span>
+            <span class="tab__d">Search a shop, an amount or a single item. Bills sit under their month with its total, and a bill saved twice is found and offered for review.</span>
           </button>
-          <button class="tab" role="tab" id="tab-warranty" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/tall-warranties.webp" data-nav="/assets/screens/nav-warranties.webp" data-alt="Warranties screen: MacBook Air, Sony headphones and an LG washer, each with purchase and expiry dates">
-            <span class="tab__k">Warranty vault</span><span class="tab__t">Never lose a warranty again</span>
-            <span class="tab__d">Purchase date, expiry countdown and claim steps for everything you own — flagged before it lapses, not after.</span>
+          <button class="tab" role="tab" id="tab-leaks" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/tall-money-leaks.webp" data-nav="/assets/screens/nav-insights.webp" data-alt="Money Leaks: ₹3,334 leaked in October, Leak Score 44, each category against its planned budget">
+            <span class="tab__k">Insights · Money Leaks</span><span class="tab__t">Your plan against what you spent</span>
+            <span class="tab__d">Six questions set an ideal budget for your income and city. Every bill is checked against it, and the Leak Score shows how far off you are.</span>
           </button>
-          <button class="tab" role="tab" id="tab-subs" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/tall-subscriptions.webp" data-nav="/assets/screens/nav-subscriptions.webp" data-alt="Subscriptions screen: ₹2,491 per month across 5 active subscriptions, next renewal iCloud+ on 28 October">
-            <span class="tab__k">Subscriptions</span><span class="tab__t">Every renewal, before it charges</span>
-            <span class="tab__d">Detected straight from your inbox: what you pay, when it renews, and which ones you forgot you had.</span>
+          <button class="tab" role="tab" id="tab-vault" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/tall-warranties.webp" data-nav="/assets/screens/nav-vault.webp" data-alt="Warranty vault: products grouped by how soon their cover ends">
+            <span class="tab__k">Vault</span><span class="tab__t">Warranties and renewals, before they lapse</span>
+            <span class="tab__d">Warranties grouped by how soon cover ends. Subscriptions with what they cost a month and when they charge next.</span>
           </button>
-          <button class="tab" role="tab" id="tab-split" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/tall-splits.webp" data-nav="/assets/screens/nav-splits.webp" data-alt="Splits screen: balances with four friends and recent bills ready to split">
-            <span class="tab__k">Split</span><span class="tab__t">Split it with the bill attached</span>
-            <span class="tab__d">Pick a saved bill, pick your friends. Everyone sees exactly what they're paying for — and who still owes what.</span>
+          <button class="tab" role="tab" id="tab-split" aria-controls="productStage" aria-selected="false" tabindex="-1" data-screen="/assets/screens/tall-splits.webp" data-nav="/assets/screens/nav-bills.webp" data-alt="Split the bill line by line: Blue Tokai Coffee, ₹412, two Cappuccinos and an Almond Croissant shared between you and Riya Kapoor, ₹206 each">
+            <span class="tab__k">Split</span><span class="tab__t">Split it line by line</span>
+            <span class="tab__d">Pick who had what. Tax is shared in proportion, and every share adds up to the bill.</span>
           </button>
         </div>
         <div class="product__stage rv" id="productStage" role="tabpanel" aria-labelledby="tab-collect">
@@ -564,11 +571,71 @@
             <div class="phone__island"></div>
             <div class="phone__screen" id="productScreen">
               <div class="phone__status"><span>13:20</span><i><b></b></i></div>
-              <img id="productImg" class="tall" src="/assets/screens/tall-all-bills.webp" width="780" height="4200" alt="All Bills screen: ₹63,962 across 59 bills, filterable by NFC bills and category, with Blue Tokai Coffee at the top" loading="lazy">
-              <img id="productNav" class="phone__nav" src="/assets/screens/nav-all-bills.webp" width="780" height="150" alt="" loading="lazy">
+              <img id="productImg" class="tall" src="/assets/screens/tall-home.webp" width="780" height="4014" alt="Home: ₹25,916 in the last 30 days by category, the latest bill on paper, and what needs you this week: Netflix renews in 3 days, a Croma return window, a warranty ending" loading="lazy">
+              <img id="productNav" class="phone__nav" src="/assets/screens/nav-home.webp" width="780" height="192" alt="" loading="lazy">
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ADD A BILL ================= -->
+  <section class="section" id="add">
+    <div class="wrap">
+      <div class="rv">
+        <p class="label">Add a bill</p>
+        <h2 class="h2">Any bill, any way.<br>One check before it's saved.</h2>
+        <p class="lede">Scan a paper slip, upload photos or PDFs — many at once — paste a payment text, tap the table, or type it in. Every way ends on the same screen: the bill beside what was read, and the sums checked.</p>
+      </div>
+      <div class="steps">
+        <div class="step rv">
+          <span class="step__n">WHERE IS IT?</span>
+          <div class="phone"><div class="phone__island"></div><div class="phone__screen"><div class="phone__status"><span>13:20</span><i><b></b></i></div>
+            <img src="/assets/screens/capture.webp" width="780" height="1688" alt="Add a bill: Scan, Upload, Gmail (invite-only beta), SMS and Tap, or type it in" loading="lazy"></div></div>
+          <h3>One button, every source</h3>
+          <p>Camera, photos, PDFs, UPI texts and the table tag. Gmail import is an invite-only beta for now.</p>
+        </div>
+        <div class="step rv">
+          <span class="step__n">IT ADDS UP</span>
+          <div class="phone"><div class="phone__island"></div><div class="phone__screen"><div class="phone__status"><span>13:21</span><i><b></b></i></div>
+            <img src="/assets/screens/add-check.webp" width="780" height="1688" alt="Check the bill: two Cappuccinos at 320 and an Almond Croissant at 92, subtotal 392.38, tax 19.62, and a tick: the numbers add up to the total" loading="lazy"></div></div>
+          <h3>The sums, checked live</h3>
+          <p>Lines, tax, service charge and discount are added up against the total as you look.</p>
+        </div>
+        <div class="step rv">
+          <span class="step__n">OR IT SAYS SO</span>
+          <div class="phone"><div class="phone__island"></div><div class="phone__screen"><div class="phone__status"><span>13:21</span><i><b></b></i></div>
+            <img src="/assets/screens/add-mismatch.webp" width="780" height="1688" alt="Check the bill: the lines come to ₹412.00 but the total says ₹421.00; one of them was probably misread" loading="lazy"></div></div>
+          <h3>A misread, caught</h3>
+          <p>Read ₹421 where the lines make ₹412? You see the gap before anything is saved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUST ================= -->
+  <section class="section" id="trust">
+    <div class="wrap problem__grid">
+      <div class="rv">
+        <p class="label">Checked, not guessed</p>
+        <h2 class="h2">An empty field beats a wrong one.</h2>
+        <p class="lede">A bill app is only worth keeping if you can trust what it says. EZZ BILL shows what is printed on the bill as fact — and nothing it made up.</p>
+        <div class="trust__phone">
+          <div class="phone"><div class="phone__island"></div><div class="phone__screen"><div class="phone__status"><span>13:22</span><i><b></b></i></div>
+            <img src="/assets/screens/smart-support.webp" width="780" height="1688" alt="Smart Support for a Croma bill: shop, address, bill number and payment method, each tagged From the bill" loading="lazy"></div></div>
+          <p class="cap">Smart Support · from the bill</p>
+        </div>
+      </div>
+      <div class="receipt rv" role="group" aria-label="What every bill goes through">
+        <div class="receipt__head">WHAT EVERY BILL GOES THROUGH<small>Every bill you scan or upload</small></div>
+        <hr>
+        <div class="item"><span class="q">01</span><h3>Printed means fact</h3><p>Shop, address, bill number and contacts come from the bill itself. Anything suggested is marked Unverified.</p></div>
+        <div class="item"><span class="q">02</span><h3>The sums are checked</h3><p>Lines, tax, charges and discount are added up against the total. A gap is shown before you save.</p></div>
+        <div class="item"><span class="q">03</span><h3>Twice is asked, never merged</h3><p>Same invoice number, or same shop, total and day: you decide. Two coffees can be two purchases.</p></div>
+        <div class="item"><span class="q">04</span><h3>Dates the Indian way</h3><p>04/11/26 is the 4th of November, not the 11th of April.</p></div>
+        <hr>
+        <div class="receipt__total receipt__total--ok"><span>WHEN UNSURE</span><b>it asks.</b></div>
       </div>
     </div>
   </section>
@@ -579,27 +646,27 @@
       <div class="rv">
         <p class="label">NFC Airdrop · live today</p>
         <h2 class="h2">Tap the table. The bill is yours.</h2>
-        <p class="lede">No app to download, no QR to scan, no email to type. One tag per table hands each guest their own bill — then hands the next guest theirs.</p>
+        <p class="lede">No app to download, nothing to type. One tag per table hands each guest their own bill — then hands the next guest theirs. Phones without NFC scan the QR code on the same tag.</p>
       </div>
       <div class="steps">
         <div class="step rv">
           <span class="step__n">STEP 1</span>
           <div class="phone"><div class="phone__island"></div><div class="phone__screen"><div class="phone__status"><span>13:18</span><i><b></b></i></div>
-            <img src="/assets/screens/staff.webp" width="780" height="1688" alt="Staff console: Table 3 and Counter show bills ready to tap; Table 12 and Table 7 are open" loading="lazy"></div></div>
+            <img src="/assets/screens/staff.webp" width="780" height="1688" alt="Staff tables: Table 3 has a ₹412 bill waiting to be tapped; Tables 1, 2 and 4 are ready to send" loading="lazy"></div></div>
           <h3>Staff send the bill</h3>
-          <p>Enter the total, snap the printed bill. The table's tag is armed in seconds — and every table's status is live on one screen.</p>
+          <p>Snap the printed bill and send it to the table. Every table's status is live on one screen.</p>
         </div>
         <div class="step rv">
           <span class="step__n">STEP 2</span>
           <div class="phone"><div class="phone__island"></div><div class="phone__screen"><div class="phone__status"><span>13:19</span><i><b></b></i></div>
-            <img src="/assets/screens/tap-guest.webp" width="780" height="1688" alt="Guest's phone after tapping the table tag: Blue Tokai Coffee receipt for ₹412 with sign-in to save" loading="lazy"></div></div>
+            <img src="/assets/screens/tap.webp" width="780" height="1688" alt="The guest's phone after tapping Table 3: the Blue Tokai Coffee bill, ₹412, itemised, with sign in to save it" loading="lazy"></div></div>
           <h3>The guest taps the tag</h3>
-          <p>Any phone opens the bill instantly. AI reads every line item while they sign in with one tap.</p>
+          <p>Any phone opens the bill at once, line by line. One sign-in keeps it.</p>
         </div>
         <div class="step rv">
           <span class="step__n">STEP 3</span>
           <div class="phone"><div class="phone__island"></div><div class="phone__screen"><div class="phone__status"><span>13:20</span><i><b></b></i></div>
-            <img src="/assets/screens/bill-detail.webp" width="780" height="1688" alt="Saved bill: Blue Tokai Coffee, Food and Dining, paid by UPI, with itemised Cappuccino and Almond Croissant" loading="lazy"></div></div>
+            <img src="/assets/screens/bill.webp" width="780" height="1688" alt="The saved bill: Blue Tokai Coffee, Koregaon Park, Table 3, two Cappuccinos and an Almond Croissant, ₹412 paid by UPI" loading="lazy"></div></div>
           <h3>Filed, itemised, forever</h3>
           <p>Saved and categorised in their EZZ BILL, right next to every other bill — ready to split, claim or search.</p>
         </div>
@@ -647,13 +714,13 @@
         <div class="rv">
           <a class="browser" id="deskView" href="https://ezbill.live/" target="_blank" rel="noopener" aria-label="Open the live EZZ BILL web app">
             <div class="browser__bar"><span class="browser__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="browser__url" id="deskUrl"><b>ezbill.live</b>/</span></div>
-            <span class="browser__view"><img id="deskImg" src="/assets/screens/desk-home.webp" srcset="/assets/screens/desk-home@1x.webp 800w, /assets/screens/desk-home.webp 1600w" sizes="(max-width: 860px) 92vw, 860px" width="1600" height="1000" alt="Web dashboard: ₹25,916 spent in the last 30 days, down 32%, with recent bills and quick actions" loading="lazy"></span>
+            <span class="browser__view"><img id="deskImg" src="/assets/screens/desk-home.webp" srcset="/assets/screens/desk-home@1x.webp 800w, /assets/screens/desk-home.webp 1600w" sizes="(max-width: 860px) 92vw, 860px" width="1600" height="1000" alt="Home in a browser: ₹25,916 in the last 30 days by category, earlier bills, the latest bill and what needs you" loading="lazy"></span>
           </a>
           <div class="seg" role="group" aria-label="Switch web app screen">
-            <button type="button" aria-pressed="true" data-v="home" data-path="/" data-alt="Web dashboard: ₹25,916 spent in the last 30 days, down 32%, with recent bills and quick actions">Dashboard</button>
-            <button type="button" aria-pressed="false" data-v="staff" data-path="/staff" data-alt="Staff console in the browser: every table's status, with bills ready to tap at Table 3 and the counter">Staff console</button>
-            <button type="button" aria-pressed="false" data-v="money-leaks" data-path="/money-leaks" data-alt="Money Leaks on the web: Leak Score 49 out of 100 with category budgets">Money Leaks</button>
-            <button type="button" aria-pressed="false" data-v="analytics" data-path="/analytics" data-alt="Insights on the web: spending by category and month">Insights</button>
+            <button type="button" aria-pressed="true" data-v="home" data-path="/" data-alt="Home in a browser: ₹25,916 in the last 30 days by category, earlier bills, the latest bill and what needs you">Home</button>
+            <button type="button" aria-pressed="false" data-v="staff" data-path="/staff" data-alt="Staff tables in a browser: Table 3 has a bill waiting; the other tables are ready to send">Staff tables</button>
+            <button type="button" aria-pressed="false" data-v="money-leaks" data-path="/money-leaks" data-alt="Money Leaks in a browser: ₹3,334 leaked in October, Leak Score 44, each category against its plan">Money Leaks</button>
+            <button type="button" aria-pressed="false" data-v="analytics" data-path="/analytics" data-alt="Spending in a browser: the month's total, categories, six months of bars and the top shops">Spending</button>
           </div>
         </div>
         <div class="proof__phone rv">
